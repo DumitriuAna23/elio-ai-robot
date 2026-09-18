@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "ELIO App",
+    "slug": "elio-app",
+    "scheme": "elio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "plugins": [
+      "expo-router",
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "modes": [
+            "central"
+          ],
+          "bluetoothAlwaysPermission": "Allow ELIO to connect to your robot over Bluetooth."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "android": {
+      "package": "com.talesandtechhub.elio",
+      "permissions": [
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.talesandtechhub.elio"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "26f9c75f-e3de-4fe1-81c6-dcf22fb622a9"
+      }
+    }
+  }
+}
