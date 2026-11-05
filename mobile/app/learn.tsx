@@ -1,0 +1,5 @@
+import {useLanguage} from '../context/Language';
+import {ScrollView,StyleSheet,Text,View} from 'react-native';import {C} from '../constants/theme';import {Card,Title,Sub} from '../components/UI';
+const modes=[['📖','Povești','Povești interactive create împreună cu ELIO'],['🧩','Ghicitori','Antrenează curiozitatea și logica'],['🏆','Quiz','Întrebări pe niveluri și teme'],['🌍','Cultură generală','Descoperă lumea prin întrebări']];
+export default function Learn(){const {t}=useLanguage();return <ScrollView style={s.page} contentContainerStyle={s.c}><Title>{t('Learn with ELIO')}</Title><Sub>{t('Alege o activitate.')}</Sub>{modes.map(([e,name,d])=><Card key={name}><View style={s.row}><Text style={s.e}>{e}</Text><View style={{flex:1}}><Text style={s.t}>{t(name)}</Text><Text style={s.d}>{t(d)}</Text></View><Text style={s.go}>›</Text></View></Card>)}</ScrollView>}
+const s=StyleSheet.create({page:{flex:1,backgroundColor:C.bg},c:{padding:22,paddingTop:58,gap:14},row:{flexDirection:'row',alignItems:'center',gap:14},e:{fontSize:34},t:{color:C.text,fontSize:18,fontWeight:'800'},d:{color:C.muted,marginTop:4},go:{color:C.accent,fontSize:34}});

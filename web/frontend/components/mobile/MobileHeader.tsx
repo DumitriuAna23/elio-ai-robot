@@ -1,0 +1,1 @@
+export default function MobileHeader({title}:{title:string}){return <header className="mobileHeader"><b>ELIO</b><span>{title}</span></header>}

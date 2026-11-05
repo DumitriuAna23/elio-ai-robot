@@ -1,0 +1,653 @@
+{
+ "facts": "ELIO app blocks (tap to add, run in order). Categories: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables.\nBlocks that run on the current ELIO firmware: move forward, move backward, turn left, turn right (short moves), stop ELIO, set speed to 60%, wait 1 second, when green flag clicked.\nOther blocks exist in the editor (faces, say, sound, repeat, forever, if/then, wait until, distance, obstacle detected, operators, variables) and on desktop many of them run; some need new firmware.\nOn laptop/tablet the editor is drag-and-snap (Blockly); on phone you tap blocks to add them to a list.\nLEGO Education SPIKE: SPIKE Prime (ages ~10+): hub with 6 ports, 5x5 light matrix, speaker, buttons, gyro; motors (large, medium), color, distance and force sensors.\nSPIKE Essential (younger, primary school): small hub with 2 ports, small angular motors, 3x3 color light matrix, color sensor.\nSPIKE app has Icon Blocks (youngest), Word Blocks (Scratch-like) and Python. Word block categories: Motors, Movement, Light, Sound, Events, Control, Sensors, Operators, Variables, My Blocks.\nExact block wording can differ slightly between SPIKE app versions.",
+ "faq": [
+  {
+   "q": [
+    "ce este un program",
+    "ce e programarea",
+    "ce inseamna sa programezi"
+   ],
+   "a": "Un program este o listă de instrucțiuni pe care robotul le face în ordine, una după alta. Programarea înseamnă să scrii aceste instrucțiuni clar, pas cu pas."
+  },
+  {
+   "q": [
+    "ce este un algoritm",
+    "ce e un algoritm"
+   ],
+   "a": "Un algoritm este o rețetă cu pași clari pentru a rezolva o problemă. De exemplu: ia pâinea, pune unt, pune gem. Robotul face la fel, pas cu pas.",
+   "show": "Ce este un algoritm?"
+  },
+  {
+   "q": [
+    "ce este o variabila",
+    "ce e variabila",
+    "la ce folosesc variabilele"
+   ],
+   "a": "O variabilă este ca o cutiuță cu nume în care păstrezi o valoare, de exemplu scorul. Valoarea dinăuntru se poate schimba oricând în timpul programului.",
+   "show": "Ce este o variabilă?"
+  },
+  {
+   "q": [
+    "ce este o bucla",
+    "ce e o repetitie",
+    "de ce folosesc repeta",
+    "ce inseamna loop"
+   ],
+   "a": "O buclă repetă aceleași blocuri de mai multe ori. În loc să pui de patru ori mergi înainte, pui un bloc repetă 4 cu mergi înainte înăuntru.",
+   "show": "Ce este o buclă?"
+  },
+  {
+   "q": [
+    "ce este o conditie",
+    "ce inseamna daca atunci",
+    "ce face if"
+   ],
+   "a": "O condiție este o întrebare cu răspuns da sau nu. Dacă răspunsul e da, robotul face blocurile din interior, altfel le sare. De exemplu: dacă e obstacol, oprește-te.",
+   "show": "Ce înseamnă dacă–atunci?"
+  },
+  {
+   "q": [
+    "ce este un eveniment",
+    "ce sunt evenimentele",
+    "ce e un bloc de tip palarie"
+   ],
+   "a": "Un eveniment pornește un program când se întâmplă ceva, de exemplu când apeși steagul verde sau când robotul vede un obstacol. Blocurile de eveniment stau mereu în vârf."
+  },
+  {
+   "q": [
+    "ce este un bug",
+    "ce e o eroare in program",
+    "cum repar un program",
+    "ce inseamna debug"
+   ],
+   "a": "Un bug este o greșeală în program. Ca să-l repari, rulezi programul pas cu pas, vezi unde robotul nu face ce trebuie și schimbi blocul greșit. Asta se numește depanare!"
+  },
+  {
+   "q": [
+    "ce sunt operatorii",
+    "ce face un operator",
+    "ce sunt blocurile verzi"
+   ],
+   "a": "Operatorii fac calcule și comparații: adună, scad, înmulțesc, împart sau verifică dacă un număr e mai mare, mai mic sau egal cu altul."
+  },
+  {
+   "q": [
+    "ce face mergi inainte",
+    "blocul mergi inainte",
+    "move forward"
+   ],
+   "a": "Blocul mergi înainte mă face să merg puțin în față, apoi mă opresc. Dacă vrei să merg mai mult, pune mai multe blocuri sau folosește blocul repetă."
+  },
+  {
+   "q": [
+    "ce face mergi inapoi",
+    "blocul mergi inapoi",
+    "move backward"
+   ],
+   "a": "Blocul mergi înapoi mă face să dau puțin înapoi, apoi mă opresc. E util când m-am apropiat prea mult de un obstacol."
+  },
+  {
+   "q": [
+    "ce face vireaza stanga",
+    "ce face vireaza dreapta",
+    "cum ma intorc",
+    "blocul vireaza",
+    "turn left",
+    "turn right"
+   ],
+   "a": "Blocurile virează stânga și virează dreapta mă rotesc puțin pe loc. O șenilă merge înainte și cealaltă înapoi, așa că mă întorc fără să înaintez."
+  },
+  {
+   "q": [
+    "ce face opreste elio",
+    "blocul opreste",
+    "stop elio"
+   ],
+   "a": "Blocul oprește ELIO oprește imediat motoarele. E bine să-l pui la finalul programului, ca să fii sigur că stau pe loc."
+  },
+  {
+   "q": [
+    "ce face seteaza viteza",
+    "blocul viteza",
+    "set speed"
+   ],
+   "a": "Blocul setează viteza la 60 la sută îmi spune cât de repede să merg la următoarele mișcări. 100 e cel mai repede, iar un număr mic înseamnă mai încet și mai precis."
+  },
+  {
+   "q": [
+    "ce face arata expresia",
+    "blocul arata fata",
+    "show face",
+    "cum schimb expresia din cod"
+   ],
+   "a": "Blocurile arată expresia îmi schimbă fața de pe ecran: fericit, iubire, curios sau surprins. Așa îmi arăți emoțiile din program."
+  },
+  {
+   "q": [
+    "ce face blocul spune",
+    "say hello",
+    "cum il fac sa spuna ceva"
+   ],
+   "a": "Blocul spune Salut mă face să spun un mesaj. Poți schimba textul cu ce vrei tu să spun."
+  },
+  {
+   "q": [
+    "ce face reda sunetul",
+    "play sound",
+    "blocul bip"
+   ],
+   "a": "Blocul redă sunetul Bip scoate un sunet scurt din difuzorul meu. E util ca semnal, de exemplu la finalul unei misiuni."
+  },
+  {
+   "q": [
+    "ce face steagul verde",
+    "cand este apasat steagul verde",
+    "green flag"
+   ],
+   "a": "Blocul când este apăsat steagul verde pornește programul. Pune-l primul, iar sub el toate celelalte blocuri."
+  },
+  {
+   "q": [
+    "cand elio este conectat",
+    "blocul cand elio e conectat"
+   ],
+   "a": "Blocul când ELIO este conectat pornește blocurile de sub el imediat ce telefonul se conectează la mine prin Bluetooth."
+  },
+  {
+   "q": [
+    "cand este detectat un obstacol",
+    "blocul obstacol detectat eveniment"
+   ],
+   "a": "Blocul când este detectat un obstacol pornește blocurile de sub el când senzorul meu vede ceva foarte aproape. Poți să mă faci să mă întorc sau să spun Atenție!"
+  },
+  {
+   "q": [
+    "ce face asteapta",
+    "blocul asteapta 1 secunda",
+    "wait"
+   ],
+   "a": "Blocul așteaptă 1 secundă mă face să stau pe loc o secundă înainte de pasul următor. E util ca să vezi bine fiecare mișcare."
+  },
+  {
+   "q": [
+    "ce face repeta 10",
+    "blocul repeta",
+    "repeat"
+   ],
+   "a": "Blocul repetă 10 face blocurile din interiorul lui de 10 ori. De exemplu, repetă 4 cu mergi înainte și virează dreapta mă face să desenez un pătrat."
+  },
+  {
+   "q": [
+    "ce face la nesfarsit",
+    "blocul forever",
+    "bucla infinita"
+   ],
+   "a": "Blocul la nesfârșit repetă blocurile din interior fără oprire, până apeși Oprește. E bun pentru roboți care patrulează sau verifică mereu un senzor."
+  },
+  {
+   "q": [
+    "ce face daca atunci altfel",
+    "if else",
+    "blocul altfel"
+   ],
+   "a": "Blocul dacă atunci altfel are două ramuri. Dacă e adevărat, face prima parte. Dacă nu, face partea de la altfel. De exemplu: dacă e obstacol, întoarce-te, altfel mergi înainte."
+  },
+  {
+   "q": [
+    "ce face asteapta pana cand",
+    "wait until"
+   ],
+   "a": "Blocul așteaptă până când oprește programul până când o condiție devine adevărată, de exemplu până când nu mai e obstacol în față."
+  },
+  {
+   "q": [
+    "ce face repeta pana cand",
+    "repeat until"
+   ],
+   "a": "Blocul repetă până când face blocurile din interior iar și iar, până când condiția devine adevărată. De exemplu: repetă mergi înainte până când e obstacol."
+  },
+  {
+   "q": [
+    "ce face blocul distanta",
+    "blocul distance",
+    "cum citesc distanta in cod"
+   ],
+   "a": "Blocul distanță îți dă numărul de centimetri până la obstacolul din fața mea. Îl poți compara cu alt număr, de exemplu distanța mai mică decât 20."
+  },
+  {
+   "q": [
+    "ce face obstacol detectat",
+    "blocul obstacle detected"
+   ],
+   "a": "Blocul obstacol detectat răspunde cu da sau nu: da dacă ceva e foarte aproape de mine. Se pune în blocuri ca dacă sau așteaptă până când."
+  },
+  {
+   "q": [
+    "ce face elio conectat",
+    "blocul elio conectat"
+   ],
+   "a": "Blocul ELIO conectat răspunde cu da dacă telefonul e conectat la mine prin Bluetooth și cu nu dacă nu e."
+  },
+  {
+   "q": [
+    "ce face si",
+    "ce face sau",
+    "ce face nu",
+    "blocurile si sau nu",
+    "and or not"
+   ],
+   "a": "Blocul și e adevărat doar dacă ambele condiții sunt adevărate. Blocul sau e adevărat dacă măcar una e adevărată. Blocul nu întoarce răspunsul: da devine nu."
+  },
+  {
+   "q": [
+    "cum adun numere",
+    "blocurile plus minus",
+    "operatorii matematici"
+   ],
+   "a": "Operatorii plus, minus, ori și împărțit fac calcule cu numere. Rezultatul îl poți folosi la viteză, la așteptare sau îl poți păstra într-o variabilă."
+  },
+  {
+   "q": [
+    "ce face mai mare decat",
+    "ce face mai mic decat",
+    "ce face egal",
+    "blocurile de comparatie"
+   ],
+   "a": "Blocurile mai mic decât, egal și mai mare decât compară două numere și răspund cu da sau nu. Le folosești în dacă, de exemplu dacă distanța e mai mică decât 15."
+  },
+  {
+   "q": [
+    "ce face seteaza variabila",
+    "ce face modifica variabila",
+    "set variable",
+    "change variable"
+   ],
+   "a": "Blocul setează variabila pune o valoare nouă în cutiuță. Blocul modifică variabila cu 1 adaugă 1 la ce era acolo, perfect pentru a număra pași sau puncte."
+  },
+  {
+   "q": [
+    "ce este lego spike",
+    "ce e spike",
+    "ce este lego education spike"
+   ],
+   "a": "LEGO Education SPIKE este un set de robotică LEGO pentru școli. Construiești roboți din piese LEGO, motoare și senzori, apoi îi programezi în aplicația SPIKE cu blocuri sau Python.",
+   "show": "Ce este LEGO SPIKE?"
+  },
+  {
+   "q": [
+    "diferenta intre spike prime si spike essential",
+    "spike prime sau spike essential",
+    "ce e spike essential"
+   ],
+   "a": "SPIKE Essential e pentru copiii mai mici: are un hub mic cu 2 porturi și o matrice de lumini colorate 3 pe 3. SPIKE Prime e pentru copiii mai mari, cu un hub cu 6 porturi și un ecran de lumini 5 pe 5.",
+   "show": "SPIKE Prime sau Essential?"
+  },
+  {
+   "q": [
+    "ce este hubul spike prime",
+    "ce e hub ul",
+    "ce face hubul"
+   ],
+   "a": "Hubul este creierul robotului LEGO. Are 6 porturi pentru motoare și senzori, un ecran cu 5 pe 5 lumini, butoane, difuzor, baterie și un senzor care simte înclinarea."
+  },
+  {
+   "q": [
+    "ce senzori are spike prime",
+    "ce senzori are lego",
+    "senzorii lego"
+   ],
+   "a": "SPIKE Prime are un senzor de culoare, un senzor de distanță și un senzor de forță care simte apăsarea. Hubul are în interior și un giroscop care simte înclinarea și rotirea."
+  },
+  {
+   "q": [
+    "ce motoare are spike prime",
+    "ce motoare are lego",
+    "motorul mare si mediu"
+   ],
+   "a": "SPIKE Prime are un motor mare și motoare medii. Toate știu exact cât s-au rotit, așa că le poți spune să se învârtă un număr precis de rotații sau grade."
+  },
+  {
+   "q": [
+    "ce sunt porturile",
+    "porturile a b c d e f",
+    "unde conectez motorul"
+   ],
+   "a": "Porturile sunt mufele de pe hub, notate cu litere de la A la F la SPIKE Prime. În program alegi litera portului unde ai conectat motorul sau senzorul."
+  },
+  {
+   "q": [
+    "cum conectez hubul la aplicatie",
+    "cum conectez lego la tableta",
+    "conectare spike"
+   ],
+   "a": "Pornește hubul, deschide aplicația SPIKE, apasă butonul de conectare și apoi butonul Bluetooth de pe hub. Poți conecta hubul și cu cablul USB."
+  },
+  {
+   "q": [
+    "ce sunt icon blocks",
+    "ce sunt word blocks",
+    "ce tipuri de programare are spike"
+   ],
+   "a": "Aplicația SPIKE are blocuri cu iconițe pentru cei mici, blocuri cu cuvinte asemănătoare cu Scratch și Python pentru cei mari. Programul face același lucru, doar că e scris altfel."
+  },
+  {
+   "q": [
+    "ce este python",
+    "pot sa programez lego in python"
+   ],
+   "a": "Python este un limbaj în care scrii programul cu text în loc de blocuri. Aplicația SPIKE îți permite să programezi hubul și în Python, când ești pregătit pentru pasul următor."
+  },
+  {
+   "q": [
+    "ce face run clockwise for rotations",
+    "motorul ruleaza in sensul acelor de ceasornic",
+    "blocul motor rotatii"
+   ],
+   "a": "Blocul care rotește motorul de la portul A în sensul acelor de ceasornic un număr de rotații învârte un singur motor exact cât îi spui: rotații, grade sau secunde."
+  },
+  {
+   "q": [
+    "ce face go to position",
+    "blocul pozitie motor",
+    "motorul merge la pozitia"
+   ],
+   "a": "Blocul care trimite motorul la o poziție îl rotește până la un anumit unghi, de la 0 la 359 de grade. E util pentru brațe sau indicatoare care trebuie să ajungă exact într-un loc."
+  },
+  {
+   "q": [
+    "ce face start motor",
+    "ce face stop motor",
+    "porneste motorul"
+   ],
+   "a": "Blocul de pornire a motorului îl învârte fără oprire, iar blocul de oprire îl oprește. Între ele poți pune așteptări sau condiții."
+  },
+  {
+   "q": [
+    "ce face set speed la motor",
+    "viteza motorului lego",
+    "set motor speed"
+   ],
+   "a": "Blocul de viteză pentru motor stabilește cât de repede se învârte motorul ales, în procente. Se aplică la următoarele blocuri pentru acel motor."
+  },
+  {
+   "q": [
+    "ce face motor position",
+    "ce face motor speed",
+    "blocul pozitie a motorului"
+   ],
+   "a": "Blocurile rotunde de poziție și viteză a motorului îți spun cât s-a rotit motorul sau cât de repede merge. Le poți folosi în condiții sau le poți afișa."
+  },
+  {
+   "q": [
+    "ce face move for cm",
+    "blocul move forward for",
+    "blocul de miscare lego"
+   ],
+   "a": "Blocul de mișcare face robotul cu două roți să meargă înainte sau înapoi o distanță aleasă: centimetri, rotații, grade sau secunde. Folosește perechea de motoare de mișcare."
+  },
+  {
+   "q": [
+    "ce face set movement motors",
+    "perechea de motoare",
+    "movement motors a b"
+   ],
+   "a": "Blocul care setează motoarele de mișcare îi spune hubului care două porturi sunt roțile robotului, de exemplu A și B. Pune-l la începutul programului."
+  },
+  {
+   "q": [
+    "ce face steering",
+    "ce face move right",
+    "cum vireaza robotul lego",
+    "directia la miscare"
+   ],
+   "a": "Blocul de mișcare cu direcție are o valoare de la minus 100 la 100. Zero merge drept, valorile mici fac o curbă ușoară, iar 100 sau minus 100 rotesc robotul pe loc."
+  },
+  {
+   "q": [
+    "ce face start moving",
+    "ce face stop moving"
+   ],
+   "a": "Blocul de pornire a mișcării face robotul să meargă continuu, iar blocul de oprire îl oprește. Le folosești împreună cu senzorii, de exemplu: mergi până vezi negru.",
+   "show": "Cum virează robotul LEGO?"
+  },
+  {
+   "q": [
+    "ce face set movement speed",
+    "viteza de miscare lego"
+   ],
+   "a": "Blocul pentru viteza de mișcare stabilește cât de repede merge robotul, în procente, pentru toate blocurile de mișcare de după el."
+  },
+  {
+   "q": [
+    "ce face set 1 motor rotation to cm",
+    "calibrare roata",
+    "cm pe rotatie"
+   ],
+   "a": "Blocul care spune câți centimetri înseamnă o rotație a motorului îl ajută pe robot să meargă exact distanța cerută. Valoarea depinde de mărimea roților."
+  },
+  {
+   "q": [
+    "ce face turn on image",
+    "blocul imagine pe hub",
+    "cum afisez o imagine pe hub"
+   ],
+   "a": "Blocul care aprinde o imagine desenează un model pe ecranul de lumini al hubului, de exemplu o inimă sau o față zâmbitoare, pentru câteva secunde sau până îl schimbi."
+  },
+  {
+   "q": [
+    "ce face write",
+    "cum scriu pe hub",
+    "blocul scrie text"
+   ],
+   "a": "Blocul de scriere afișează un text sau un număr pe ecranul de lumini al hubului. Literele trec una după alta, ca pe o reclamă luminoasă."
+  },
+  {
+   "q": [
+    "ce face turn off pixels",
+    "ce face set pixel",
+    "luminile hubului"
+   ],
+   "a": "Blocul care stinge pixelii golește ecranul de lumini. Blocul pentru un pixel aprinde o singură lumină, aleasă după rând și coloană, cu luminozitatea dorită."
+  },
+  {
+   "q": [
+    "ce face set center button light",
+    "culoarea butonului hub"
+   ],
+   "a": "Blocul pentru lumina butonului din centru schimbă culoarea butonului de pe hub. Poți folosi culori ca semnal, de exemplu verde când misiunea e gata."
+  },
+  {
+   "q": [
+    "matricea de lumini 3x3",
+    "luminile spike essential",
+    "color light matrix"
+   ],
+   "a": "La SPIKE Essential, matricea de lumini are 9 pixeli colorați, 3 pe 3. Poți aprinde fiecare pixel în altă culoare și cu altă luminozitate."
+  },
+  {
+   "q": [
+    "ce face play beep",
+    "blocul beep lego",
+    "sunetele hubului"
+   ],
+   "a": "Blocul de bip scoate o notă din difuzorul hubului. Alegi înălțimea notei și cât durează, așa că poți compune mici melodii."
+  },
+  {
+   "q": [
+    "ce face play sound until done",
+    "ce face start sound",
+    "sunetele din aplicatie"
+   ],
+   "a": "Blocurile de sunet redau sunete din aplicație, de exemplu un miau de pisică. Redă până la final așteaptă să se termine sunetul, iar pornește sunetul merge mai departe imediat."
+  },
+  {
+   "q": [
+    "ce face set volume",
+    "volumul lego"
+   ],
+   "a": "Blocul de volum stabilește cât de tare se aud sunetele, în procente. Blocul de schimbare a volumului îl crește sau îl scade puțin."
+  },
+  {
+   "q": [
+    "ce face when program starts",
+    "cand porneste programul lego"
+   ],
+   "a": "Blocul când pornește programul este punctul de start. Tot ce pui sub el se întâmplă când apeși Play în aplicație."
+  },
+  {
+   "q": [
+    "ce face when color is",
+    "cand culoarea este",
+    "eveniment senzor culoare"
+   ],
+   "a": "Blocul când culoarea este pornește blocurile de sub el când senzorul de culoare vede culoarea aleasă, de exemplu roșu."
+  },
+  {
+   "q": [
+    "ce face when closer than",
+    "cand distanta este mai mica",
+    "eveniment senzor distanta lego"
+   ],
+   "a": "Blocul când e mai aproape decât pornește blocurile de sub el când senzorul de distanță vede ceva mai aproape decât numărul ales, de exemplu 15 centimetri."
+  },
+  {
+   "q": [
+    "ce face when pressed",
+    "eveniment senzor de forta",
+    "cand este apasat senzorul"
+   ],
+   "a": "Blocul când este apăsat pornește blocurile de sub el când cineva apasă senzorul de forță. E ca un buton pentru robotul tău."
+  },
+  {
+   "q": [
+    "ce face when hub is shaken",
+    "cand hubul este inclinat",
+    "eveniment giroscop"
+   ],
+   "a": "Blocurile când hubul e scuturat sau înclinat pornesc programul când miști hubul. Senzorul de mișcare din interiorul hubului simte asta."
+  },
+  {
+   "q": [
+    "ce face broadcast",
+    "ce face when i receive",
+    "mesaje intre programe"
+   ],
+   "a": "Blocul de transmitere trimite un mesaj, iar blocul când primesc mesajul pornește alt șir de blocuri. Așa poți face mai multe părți ale programului să lucreze împreună."
+  },
+  {
+   "q": [
+    "ce face when timer",
+    "cronometrul lego",
+    "ce face reset timer"
+   ],
+   "a": "Hubul are un cronometru care numără secundele. Îl poți reseta la zero, poți citi valoarea lui sau poți porni blocuri când trece de un anumit număr de secunde."
+  },
+  {
+   "q": [
+    "blocurile control lego",
+    "repeat forever if lego",
+    "control la spike"
+   ],
+   "a": "La SPIKE, categoria Control are așteaptă, repetă, la nesfârșit, dacă atunci, dacă altfel, așteaptă până când și repetă până când. Funcționează la fel ca la blocurile ELIO."
+  },
+  {
+   "q": [
+    "ce face stop other stacks",
+    "ce face stop all",
+    "opreste tot lego"
+   ],
+   "a": "Blocul de oprire poate opri tot programul sau doar celelalte șiruri de blocuri. E util când robotul a terminat misiunea."
+  },
+  {
+   "q": [
+    "ce face is color",
+    "ce face color",
+    "cum citesc culoarea lego"
+   ],
+   "a": "Blocul este culoarea întreabă dacă senzorul vede o anumită culoare și răspunde cu da sau nu. Blocul rotund culoare îți spune direct ce culoare vede."
+  },
+  {
+   "q": [
+    "ce face reflection",
+    "lumina reflectata",
+    "urmarire de linie"
+   ],
+   "a": "Blocul de lumină reflectată măsoară cât de multă lumină se întoarce de pe suprafață: puțin pe negru, mult pe alb. Așa poate un robot să urmărească o linie neagră."
+  },
+  {
+   "q": [
+    "ce face is distance closer than",
+    "ce face distance lego",
+    "senzorul de distanta lego"
+   ],
+   "a": "Senzorul de distanță LEGO funcționează ca mine, cu ultrasunete. Blocurile lui îți spun distanța în centimetri sau dacă ceva e mai aproape decât valoarea aleasă."
+  },
+  {
+   "q": [
+    "ce face is pressed",
+    "ce face force",
+    "senzorul de forta lego"
+   ],
+   "a": "Senzorul de forță simte apăsarea. Un bloc întreabă dacă e apăsat și răspunde cu da sau nu, iar altul îți spune cât de tare apeși."
+  },
+  {
+   "q": [
+    "ce face pitch roll yaw",
+    "ce face set yaw angle",
+    "giroscopul lego",
+    "unghiul hubului"
+   ],
+   "a": "Hubul simte unghiurile: înclinare față-spate, înclinare stânga-dreapta și rotire. Blocul care resetează rotirea la zero te ajută să faci robotul să se întoarcă exact 90 de grade."
+  },
+  {
+   "q": [
+    "ce face is left button pressed",
+    "butoanele hubului"
+   ],
+   "a": "Blocurile pentru butoane întreabă dacă butonul din stânga sau din dreapta al hubului e apăsat. Poți porni misiuni diferite cu butoane diferite."
+  },
+  {
+   "q": [
+    "ce face pick random",
+    "numar aleatoriu",
+    "blocul la intamplare"
+   ],
+   "a": "Blocul număr aleatoriu alege un număr la întâmplare între două valori, de exemplu între 1 și 6, ca un zar. E super pentru jocuri!"
+  },
+  {
+   "q": [
+    "ce face join",
+    "ce face letter of",
+    "ce face length of",
+    "operatori text lego"
+   ],
+   "a": "Operatorii de text lipesc două cuvinte, îți dau o literă dintr-un cuvânt sau îți spun câte litere are. Sunt utili când afișezi mesaje pe hub."
+  },
+  {
+   "q": [
+    "ce face mod",
+    "ce face round",
+    "ce face abs",
+    "operatori matematici lego"
+   ],
+   "a": "Operatorul rest împarte și îți dă ce rămâne, rotunjirea face din 3,7 numărul 4, iar valoarea absolută face numerele negative pozitive. Ajută la calcule mai complicate."
+  },
+  {
+   "q": [
+    "ce sunt listele",
+    "liste in spike",
+    "ce e o lista"
+   ],
+   "a": "O listă este o variabilă care ține mai multe valori la rând, de exemplu mai multe culori. Poți adăuga, citi sau șterge elemente din ea."
+  },
+  {
+   "q": [
+    "ce sunt my blocks",
+    "ce e un bloc personalizat",
+    "cum fac blocul meu"
+   ],
+   "a": "Blocurile Mele îți permit să-ți faci propriul bloc dintr-un grup de blocuri pe care îl folosești des, de exemplu Dansează. Programul devine mai scurt și mai ușor de citit.",
+   "show": "Ce sunt Blocurile Mele?"
+  }
+ ]
+}

@@ -1,0 +1,10401 @@
+/* ==========================================================
+   ELIO WEB
+   GLOBAL CSS
+   Tales & Tech Hub
+   ========================================================== */
+
+
+/* ==========================================================
+   RESET
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100%;
+
+  background: #ffffff;
+
+  color: #123f78;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  min-height: 100vh;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+a {
+  color: inherit;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+
+/* ==========================================================
+   VARIABLES
+   ========================================================== */
+
+:root {
+  --elio-blue: #087df0;
+  --elio-blue-light: #22a7ff;
+  --elio-blue-dark: #0759b5;
+
+  --elio-orange: #ff7a12;
+  --elio-orange-light: #ffab25;
+  --elio-orange-dark: #eb6500;
+
+  --elio-ink: #123f78;
+  --elio-text: #315d86;
+  --elio-muted: #6c87a4;
+
+  --elio-background: #f7fbff;
+  --elio-white: #ffffff;
+  --elio-border: #e0ebf5;
+}
+
+
+/* ==========================================================
+   ==========================================================
+   LANGUAGE PAGE
+   ==========================================================
+   ========================================================== */
+
+
+/* ==========================================================
+   LANGUAGE ROOT
+   ========================================================== */
+
+.languagePage {
+  position: relative;
+
+  width: 100vw;
+  height: 100dvh;
+
+  min-width: 100%;
+  min-height: 100dvh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #63c8fa;
+
+  isolation: isolate;
+}
+
+
+/* ==========================================================
+   DESKTOP LANGUAGE
+   ========================================================== */
+
+.languageDesktop {
+  position: relative;
+
+  width: 100vw;
+  height: 100dvh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #63c8fa;
+}
+
+
+/* ==========================================================
+   LANGUAGE STAGE
+
+   Imaginea și butoanele folosesc același sistem
+   de coordonate.
+   ========================================================== */
+
+.languageStage {
+  position: relative;
+
+  flex: none;
+
+  aspect-ratio: 16 / 9;
+
+  width:
+    max(
+      100vw,
+      calc(100dvh * 16 / 9)
+    );
+
+  overflow: hidden;
+}
+
+
+/* ==========================================================
+   BACKGROUND
+   ========================================================== */
+
+.languageArtwork {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center center;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* ==========================================================
+   INTERACTIVE LAYER
+   ========================================================== */
+
+.languageControls {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+
+/* ==========================================================
+   LANGUAGE SELECTOR
+
+   Modifici doar aceste valori dacă vrei să muți
+   întregul grup:
+
+   left = stânga/dreapta
+   top = sus/jos
+   ========================================================== */
+
+.languageSelector {
+  position: absolute;
+
+  left: 50%;
+  top: 67%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  width: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  z-index: 20;
+
+  pointer-events: auto;
+}
+
+
+/* ==========================================================
+   LANGUAGE OPTIONS
+
+   Cele două cercuri stau unul lângă altul.
+   ========================================================== */
+
+.languageOptions {
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 22px;
+}
+
+
+/* ==========================================================
+   ROUND LANGUAGE BUTTON
+   ========================================================== */
+
+.languageCircleButton {
+  position: relative;
+
+  width: 112px;
+  height: 112px;
+
+  flex: 0 0 112px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 8px;
+
+  border:
+    3px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.98
+    );
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      22,
+      77,
+      119,
+      0.18
+    ),
+
+    0 2px 5px
+    rgba(
+      22,
+      77,
+      119,
+      0.10
+    ),
+
+    inset
+    0 2px 4px
+    rgba(
+      255,
+      255,
+      255,
+      0.30
+    );
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==========================================================
+   SHINE EFFECT
+   ========================================================== */
+
+.languageCircleButton::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  top: 4px;
+
+  left: 13px;
+  right: 13px;
+
+  height: 38%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(
+        255,
+        255,
+        255,
+        0.30
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0
+      )
+    );
+
+  pointer-events: none;
+}
+
+
+/* ==========================================================
+   ROMANIAN BUTTON
+   ========================================================== */
+
+.languageCircleButton-ro {
+  background:
+    linear-gradient(
+      145deg,
+      #ffb32b 0%,
+      #ff9518 47%,
+      #ff7510 100%
+    );
+}
+
+
+/* ==========================================================
+   ENGLISH BUTTON
+   ========================================================== */
+
+.languageCircleButton-en {
+  background:
+    linear-gradient(
+      145deg,
+      #3cc0ff 0%,
+      #179ff8 48%,
+      #087df0 100%
+    );
+}
+
+
+/* ==========================================================
+   ROUND FLAG
+   ========================================================== */
+
+.languageRoundFlag {
+  position: relative;
+
+  z-index: 2;
+
+  width: 58px;
+  height: 58px;
+
+  display: block;
+
+  flex: 0 0 58px;
+
+  overflow: hidden;
+
+  border:
+    3px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.98
+    );
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 3px 8px
+    rgba(
+      0,
+      0,
+      0,
+      0.15
+    );
+}
+
+
+/* ==========================================================
+   FLAG GRAPHIC
+   ========================================================== */
+
+.roundFlagGraphic {
+  position: absolute;
+
+  inset: -1px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+
+/* ==========================================================
+   ROMANIAN FLAG
+   ========================================================== */
+
+.languageRoundFlag-ro
+.roundFlagGraphic {
+  background:
+    linear-gradient(
+      to right,
+
+      #002b7f 0%,
+      #002b7f 33.333%,
+
+      #fcd116 33.333%,
+      #fcd116 66.666%,
+
+      #ce1126 66.666%,
+      #ce1126 100%
+    );
+}
+
+
+/* ==========================================================
+   UNITED KINGDOM FLAG
+   ========================================================== */
+
+.languageRoundFlag-en
+.roundFlagGraphic {
+  position: absolute;
+
+  overflow: hidden;
+
+  background: #012169;
+}
+
+
+/* ==========================================================
+   UK DIAGONAL CROSS
+   ========================================================== */
+
+.languageRoundFlag-en
+.roundFlagGraphic::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+
+    linear-gradient(
+      34deg,
+
+      transparent 40%,
+
+      #ffffff 40%,
+      #ffffff 46%,
+
+      #c8102e 46%,
+      #c8102e 52%,
+
+      #ffffff 52%,
+      #ffffff 58%,
+
+      transparent 58%
+    ),
+
+    linear-gradient(
+      -34deg,
+
+      transparent 40%,
+
+      #ffffff 40%,
+      #ffffff 46%,
+
+      #c8102e 46%,
+      #c8102e 52%,
+
+      #ffffff 52%,
+      #ffffff 58%,
+
+      transparent 58%
+    );
+}
+
+
+/* ==========================================================
+   UK CENTRAL CROSS
+   ========================================================== */
+
+.languageRoundFlag-en
+.roundFlagGraphic::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+
+    linear-gradient(
+      to right,
+
+      transparent 34%,
+
+      #ffffff 34%,
+      #ffffff 41%,
+
+      #c8102e 41%,
+      #c8102e 59%,
+
+      #ffffff 59%,
+      #ffffff 66%,
+
+      transparent 66%
+    ),
+
+    linear-gradient(
+      to bottom,
+
+      transparent 34%,
+
+      #ffffff 34%,
+      #ffffff 41%,
+
+      #c8102e 41%,
+      #c8102e 59%,
+
+      #ffffff 59%,
+      #ffffff 66%,
+
+      transparent 66%
+    );
+}
+
+
+/* ==========================================================
+   LANGUAGE NAME
+   ========================================================== */
+
+.languageCircleTitle {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  text-shadow:
+    0 1px 2px
+    rgba(
+      0,
+      0,
+      0,
+      0.10
+    );
+}
+
+
+/* ==========================================================
+   LANGUAGE HOVER
+   ========================================================== */
+
+@media (hover: hover) {
+
+  .languageCircleButton:hover {
+    transform:
+      translateY(-5px)
+      scale(1.055);
+
+    filter:
+      brightness(1.04);
+
+    box-shadow:
+      0 14px 26px
+      rgba(
+        22,
+        77,
+        119,
+        0.24
+      ),
+
+      inset
+      0 2px 4px
+      rgba(
+        255,
+        255,
+        255,
+        0.38
+      );
+  }
+
+}
+
+
+/* ==========================================================
+   CLICK
+   ========================================================== */
+
+.languageCircleButton:active {
+  transform:
+    scale(0.95);
+}
+
+
+.languageCircleButtonSelected {
+  transform:
+    scale(0.95);
+
+  filter:
+    brightness(1.08);
+}
+
+
+.languageCircleButton:disabled {
+  cursor: default;
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+   ========================================================== */
+
+.languageCircleButton:focus-visible {
+  outline:
+    4px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.98
+    );
+
+  outline-offset: 4px;
+}
+
+
+/* ==========================================================
+   HINT
+   ========================================================== */
+
+.languageHint {
+  margin:
+    7px
+    0
+    0;
+
+  color: #527e9e;
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  opacity: 0.74;
+
+  text-shadow:
+    0 1px 2px
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   ========================================================== */
+
+@media
+(min-width: 1800px) {
+
+  .languageSelector {
+    left: 50%;
+    top: 67%;
+  }
+
+
+  .languageOptions {
+    gap: 24px;
+  }
+
+
+  .languageCircleButton {
+    width: 116px;
+    height: 116px;
+
+    flex-basis: 116px;
+  }
+
+
+  .languageRoundFlag {
+    width: 60px;
+    height: 60px;
+
+    flex-basis: 60px;
+  }
+
+
+  .languageCircleTitle {
+    font-size: 15px;
+  }
+
+}
+
+
+/* ==========================================================
+   NORMAL DESKTOP / LAPTOP
+   ========================================================== */
+
+@media
+(max-width: 1799px)
+and
+(min-width: 1300px) {
+
+  .languageSelector {
+    left: 50%;
+    top: 67%;
+  }
+
+
+  .languageOptions {
+    gap: 20px;
+  }
+
+
+  .languageCircleButton {
+    width: 104px;
+    height: 104px;
+
+    flex-basis: 104px;
+
+    gap: 5px;
+  }
+
+
+  .languageRoundFlag {
+    width: 53px;
+    height: 53px;
+
+    flex-basis: 53px;
+  }
+
+
+  .languageCircleTitle {
+    font-size: 14px;
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL LANDSCAPE / TABLET
+   ========================================================== */
+
+@media
+(max-width: 1299px)
+and
+(min-width: 900px) {
+
+  .languageSelector {
+    left: 50%;
+    top: 67%;
+  }
+
+
+  .languageOptions {
+    gap: 16px;
+  }
+
+
+  .languageCircleButton {
+    width: 88px;
+    height: 88px;
+
+    flex-basis: 88px;
+
+    gap: 4px;
+
+    padding: 6px;
+
+    border-width: 2px;
+  }
+
+
+  .languageRoundFlag {
+    width: 43px;
+    height: 43px;
+
+    flex-basis: 43px;
+
+    border-width: 2px;
+  }
+
+
+  .languageCircleTitle {
+    font-size: 12px;
+  }
+
+
+  .languageHint {
+    margin-top: 5px;
+
+    font-size: 7px;
+  }
+
+}
+
+
+/* ==========================================================
+   SHORT LAPTOP
+   ========================================================== */
+
+@media
+(max-height: 780px)
+and
+(min-width: 900px) {
+
+  .languageSelector {
+    top: 67%;
+  }
+
+
+  .languageCircleButton {
+    width: 88px;
+    height: 88px;
+
+    flex-basis: 88px;
+  }
+
+
+  .languageRoundFlag {
+    width: 43px;
+    height: 43px;
+
+    flex-basis: 43px;
+  }
+
+
+  .languageCircleTitle {
+    font-size: 12px;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE LANGUAGE
+   ========================================================== */
+
+.languageMobileFallback {
+  display: none;
+}
+
+
+@media
+(max-width: 899px) {
+
+  .languageDesktop {
+    display: none;
+  }
+
+
+  .languageMobileFallback {
+    width: 100vw;
+
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+      30px
+      22px;
+
+    background:
+      linear-gradient(
+        180deg,
+
+        #5bcaff 0%,
+
+        #e6f8ff 50%,
+
+        #ffffff 100%
+      );
+  }
+
+
+  .mobileFallbackContent {
+    width:
+      min(
+        100%,
+        420px
+      );
+
+    text-align: center;
+  }
+
+
+  .mobileLanguageBrand {
+    margin-bottom: 30px;
+  }
+
+
+  .mobileLanguageBrand strong {
+    display: block;
+
+    color:
+      var(--elio-blue);
+
+    font-size: 54px;
+
+    line-height: 1;
+
+    font-weight: 900;
+  }
+
+
+  .mobileLanguageBrand span {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #527e9e;
+
+    font-size: 16px;
+
+    font-weight: 700;
+  }
+
+
+  .mobileFallbackContent
+  .languageSelector {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    transform: none;
+
+    width: auto;
+
+    margin:
+      0 auto;
+  }
+
+
+  .mobileFallbackContent
+  .languageOptions {
+    gap: 18px;
+  }
+
+
+  .mobileFallbackContent
+  .languageCircleButton {
+    width: 112px;
+    height: 112px;
+
+    flex-basis: 112px;
+  }
+
+
+  .mobileFallbackContent
+  .languageRoundFlag {
+    width: 58px;
+    height: 58px;
+
+    flex-basis: 58px;
+  }
+
+
+  .mobileFallbackContent
+  .languageCircleTitle {
+    font-size: 15px;
+  }
+
+
+  .mobileFallbackContent
+  .languageHint {
+    margin-top: 10px;
+
+    font-size: 9px;
+  }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL MOBILE
+   ========================================================== */
+
+@media
+(max-width: 380px) {
+
+  .mobileFallbackContent
+  .languageOptions {
+    gap: 12px;
+  }
+
+
+  .mobileFallbackContent
+  .languageCircleButton {
+    width: 98px;
+    height: 98px;
+
+    flex-basis: 98px;
+  }
+
+
+  .mobileFallbackContent
+  .languageRoundFlag {
+    width: 49px;
+    height: 49px;
+
+    flex-basis: 49px;
+  }
+
+
+  .mobileFallbackContent
+  .languageCircleTitle {
+    font-size: 13px;
+  }
+
+}
+
+
+/* ==========================================================
+   LOADING SCREEN
+   ========================================================== */
+
+.languageLoading {
+  width: 100vw;
+  height: 100dvh;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #ffffff;
+}
+
+
+.languageLoadingDots {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.languageLoadingDots span {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  animation:
+    elioLanguageBounce
+    700ms
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+.languageLoadingDots span:nth-child(1) {
+  background:
+    var(--elio-orange);
+}
+
+
+.languageLoadingDots span:nth-child(2) {
+  background:
+    var(--elio-blue);
+
+  animation-delay: 120ms;
+}
+
+
+.languageLoadingDots span:nth-child(3) {
+  background:
+    var(--elio-orange);
+
+  animation-delay: 240ms;
+}
+
+
+@keyframes elioLanguageBounce {
+
+  from {
+    transform:
+      translateY(0);
+  }
+
+  to {
+    transform:
+      translateY(-8px);
+  }
+
+}
+
+
+/* ==========================================================
+   ==========================================================
+   MAIN APPLICATION
+   ==========================================================
+   ========================================================== */
+
+
+/* ==========================================================
+   DESKTOP / MOBILE VISIBILITY
+   ========================================================== */
+
+.desktopOnly {
+  display: block;
+}
+
+
+.mobileOnly {
+  display: none;
+}
+
+
+/* ==========================================================
+   DESKTOP SHELL
+   ========================================================== */
+
+.desktopShell {
+  display: grid;
+
+  grid-template-columns:
+    245px
+    minmax(0, 1fr);
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  background: #f8fbfe;
+}
+
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+.desktopSidebar {
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+
+  padding:
+    25px
+    17px;
+
+  background: #ffffff;
+
+  border-right:
+    1px solid
+    #e3edf6;
+
+  overflow-y: auto;
+}
+
+
+/* ==========================================================
+   BRAND
+   ========================================================== */
+
+.brandLockup {
+  display: flex;
+
+  gap: 10px;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+
+.brandRobot {
+  font-size: 31px;
+}
+
+
+.brandLockup strong {
+  display: block;
+
+  color:
+    var(--elio-orange);
+
+  font-weight: 900;
+}
+
+
+.brandLockup span {
+  display: block;
+
+  color:
+    var(--elio-blue);
+
+  font-weight: 900;
+}
+
+
+/* ==========================================================
+   ELIO MINI
+   ========================================================== */
+
+.elioMini {
+  padding: 13px;
+
+  margin-bottom: 22px;
+
+  border-radius: 15px;
+
+  background: #f2f8ff;
+
+  color:
+    var(--elio-blue);
+
+  font-weight: 900;
+}
+
+
+.elioMini small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7992a8;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   SIDEBAR NAVIGATION
+   ========================================================== */
+
+.desktopSidebar nav {
+  display: grid;
+
+  gap: 6px;
+}
+
+
+.desktopSidebar nav a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    12px
+    13px;
+
+  border-radius: 13px;
+
+  color: #27527e;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+
+.desktopSidebar nav a:hover {
+  background: #eef7ff;
+
+  color:
+    var(--elio-blue);
+
+  transform:
+    translateX(2px);
+}
+
+
+.desktopSidebar nav a.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #087df0,
+      #189bff
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      8,
+      125,
+      240,
+      0.18
+    );
+}
+
+
+.desktopSidebar nav a b {
+  min-width: 22px;
+
+  text-align: center;
+}
+
+
+/* ==========================================================
+   DESKTOP MAIN
+   ========================================================== */
+
+.desktopMain {
+  min-width: 0;
+
+  min-height: 100vh;
+}
+
+
+/* ==========================================================
+   DESKTOP HEADER
+   ========================================================== */
+
+.desktopHeader {
+  height: 82px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    0
+    30px;
+
+  background: #ffffff;
+
+  border-bottom:
+    1px solid
+    #e6eef6;
+}
+
+
+.desktopHeader h2 {
+  margin:
+    2px
+    0
+    0;
+
+  color:
+    var(--elio-ink);
+
+  font-size: 24px;
+}
+
+
+.crumb {
+  color:
+    var(--elio-orange);
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================
+   ROBOT CHIP
+   ========================================================== */
+
+.robotChip {
+  padding:
+    9px
+    13px;
+
+  border:
+    1px solid
+    #e2ebf3;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  color: #647f98;
+
+  font-size: 13px;
+}
+
+
+.robotChip i {
+  display: inline-block;
+
+  width: 8px;
+  height: 8px;
+
+  margin-right: 6px;
+
+  border-radius: 50%;
+
+  background: #a7b7c4;
+}
+
+
+/* ==========================================================
+   MAIN CONTENT
+   ========================================================== */
+
+.finalArea {
+  width: 100%;
+
+  padding:
+    28px
+    30px;
+}
+
+
+/* ==========================================================
+   HOME HERO
+   ========================================================== */
+
+.simpleHero {
+  min-height: 390px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 30px;
+
+  padding: 28px;
+
+  border:
+    1px solid
+    #e1ebf4;
+
+  border-radius: 28px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 14px 40px
+    rgba(
+      26,
+      92,
+      141,
+      0.06
+    );
+}
+
+
+.simpleHero img {
+  width: 100%;
+  height: 300px;
+
+  object-fit: cover;
+
+  border-radius: 22px;
+
+  mix-blend-mode: multiply;
+}
+
+
+.simpleHero span {
+  color:
+    var(--elio-orange);
+
+  font-weight: 900;
+}
+
+
+.simpleHero h1 {
+  margin:
+    6px
+    0;
+
+  color:
+    var(--elio-blue);
+
+  font-size:
+    clamp(
+      40px,
+      4vw,
+      58px
+    );
+
+  line-height: 1;
+}
+
+
+.simpleHero h3 {
+  margin: 0;
+
+  color:
+    var(--elio-ink);
+
+  font-size:
+    clamp(
+      22px,
+      2vw,
+      29px
+    );
+}
+
+
+.simpleHero p {
+  color:
+    var(--elio-muted);
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   PRIMARY / SECONDARY LINKS
+   ========================================================== */
+
+.primaryLink,
+.secondaryLink {
+  display: inline-block;
+
+  padding:
+    12px
+    17px;
+
+  margin:
+    10px
+    8px
+    0
+    0;
+
+  border-radius: 13px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+.primaryLink {
+  background:
+    var(--elio-orange);
+}
+
+
+.secondaryLink {
+  background:
+    var(--elio-blue);
+}
+
+
+.primaryLink:hover,
+.secondaryLink:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 9px 20px
+    rgba(
+      20,
+      80,
+      130,
+      0.16
+    );
+}
+
+
+/* ==========================================================
+   CARDS
+   ========================================================== */
+
+.simpleCards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+
+  margin-top: 15px;
+}
+
+
+.simpleCards.three {
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+}
+
+
+.simpleCards article,
+.placeholderCard {
+  padding: 20px;
+
+  border:
+    1px solid
+    #e1ebf4;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 9px 28px
+    rgba(
+      24,
+      87,
+      133,
+      0.045
+    );
+}
+
+
+.simpleCards article {
+  font-size: 26px;
+}
+
+
+.simpleCards article b {
+  display: block;
+
+  margin-top: 9px;
+
+  color:
+    var(--elio-ink);
+
+  font-size: 16px;
+}
+
+
+.simpleCards article p,
+.placeholderCard p {
+  color: #718aa1;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   TWO COLUMNS
+   ========================================================== */
+
+.twoCol {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(0, 0.9fr);
+
+  gap: 16px;
+}
+
+
+/* ==========================================================
+   ASSISTANT
+   ========================================================== */
+
+.bigIcon {
+  font-size: 50px;
+}
+
+
+.fakeInput {
+  margin-top: 30px;
+
+  padding:
+    10px
+    10px
+    10px
+    15px;
+
+  border:
+    1px solid
+    #d9e5ef;
+
+  border-radius: 14px;
+
+  color: #8ba0b4;
+
+  background: #ffffff;
+}
+
+
+.fakeInput button {
+  float: right;
+
+  border: 0;
+
+  padding:
+    9px
+    15px;
+
+  border-radius: 10px;
+
+  background:
+    var(--elio-blue);
+
+  color: #ffffff;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+/* ==========================================================
+   PRIMARY BUTTON
+   ========================================================== */
+
+.primaryButton {
+  border: 0;
+
+  padding:
+    10px
+    17px;
+
+  border-radius: 11px;
+
+  background:
+    var(--elio-blue);
+
+  color: #ffffff;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+.primaryButton:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      8,
+      125,
+      240,
+      0.18
+    );
+}
+
+
+/* ==========================================================
+   ROBOT
+   ========================================================== */
+
+.joystickPlaceholder {
+  margin:
+    25px
+    auto;
+
+  color:
+    var(--elio-blue);
+
+  font-size: 35px;
+
+  line-height: 2;
+
+  text-align: center;
+}
+
+
+.metric {
+  color:
+    var(--elio-blue);
+
+  font-size: 60px;
+
+  font-weight: 900;
+}
+
+
+.metric small {
+  font-size: 17px;
+}
+
+
+/* ==========================================================
+   EMOTIONS
+   ========================================================== */
+
+.emotionGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 10px;
+}
+
+
+.emotionGrid button {
+  padding: 20px;
+
+  border:
+    1px solid
+    #dce8f2;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  color: #234e78;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+.emotionGrid button:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    var(--elio-blue);
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      8,
+      125,
+      240,
+      0.10
+    );
+}
+
+
+/* ==========================================================
+   CODE
+   ========================================================== */
+
+.codeColumns {
+  display: grid;
+
+  grid-template-columns:
+    220px
+    minmax(0, 1fr)
+    310px;
+
+  gap: 12px;
+}
+
+
+.sampleBlock {
+  margin:
+    8px
+    0;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  color: #ffffff;
+
+  font-weight: 800;
+}
+
+
+.sampleBlock.blue {
+  background:
+    var(--elio-blue);
+}
+
+
+.sampleBlock.orange {
+  background: #ff8a17;
+}
+
+
+.sampleBlock.green {
+  background: #16b96d;
+}
+
+
+.placeholderCard pre {
+  padding: 15px;
+
+  overflow-x: auto;
+
+  border-radius: 12px;
+
+  background: #f3f7fa;
+
+  color: #204c73;
+
+  font-family:
+    Consolas,
+    Monaco,
+    monospace;
+}
+
+
+/* ==========================================================
+   MOBILE APPLICATION
+   ========================================================== */
+
+.mobileHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 17px;
+
+  border-bottom:
+    1px solid
+    #e4edf5;
+
+  background: #ffffff;
+}
+
+
+.mobileHeader b {
+  color:
+    var(--elio-orange);
+
+  font-size: 20px;
+}
+
+
+.mobileHeader span {
+  color:
+    var(--elio-ink);
+
+  font-weight: 800;
+}
+
+
+.mobileMain {
+  padding: 17px;
+}
+
+
+.placeholderMobile {
+  padding: 22px;
+
+  border:
+    1px solid
+    #e1ebf4;
+
+  border-radius: 20px;
+
+  background: #f6faff;
+}
+
+
+/* ==========================================================
+   MOBILE NAVIGATION
+   ========================================================== */
+
+.mobileNavigation {
+  position: fixed;
+
+  z-index: 100;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+  padding:
+    8px
+    4px
+    max(
+      8px,
+      env(safe-area-inset-bottom)
+    );
+
+  border-top:
+    1px solid
+    #e1eaf2;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
+
+  backdrop-filter:
+    blur(15px);
+}
+
+
+.mobileNavigation a {
+  color: #567793;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  font-weight: 800;
+}
+
+
+.mobileNavigation small {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 10px;
+}
+
+
+/* ==========================================================
+   APPLICATION RESPONSIVE
+   ========================================================== */
+
+@media
+(max-width: 1200px) {
+
+  .simpleCards {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .codeColumns {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr);
+  }
+
+
+  .codeColumns > :last-child {
+    grid-column:
+      1 / -1;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE APPLICATION SWITCH
+   ========================================================== */
+
+@media
+(max-width: 850px) {
+
+  .desktopOnly {
+    display: none;
+  }
+
+
+  .mobileOnly {
+    display: block;
+
+    min-height: 100vh;
+
+    padding-bottom: 78px;
+
+    background: #ffffff;
+  }
+
+
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+
+
+  .simpleCards,
+  .simpleCards.three {
+    grid-template-columns: 1fr;
+  }
+
+
+  .emotionGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .codeColumns {
+    grid-template-columns: 1fr;
+  }
+
+
+  .codeColumns > :last-child {
+    grid-column: auto;
+  }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media
+(prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  .languageCircleButton,
+  .languageLoadingDots span,
+  .desktopSidebar nav a,
+  .primaryLink,
+  .secondaryLink,
+  .primaryButton,
+  .emotionGrid button {
+    transition: none;
+
+    animation: none;
+  }
+
+}/* ==========================================================
+   ==========================================================
+   ELIO HOME DESKTOP
+   APPROVED MOCKUP VERSION
+   ==========================================================
+   ========================================================== */
+
+
+/* ==========================================================
+   APPLICATION SHELL
+   ========================================================== */
+
+body {
+  background: #f7fbff;
+  color: #173f78;
+}
+
+
+.app {
+  display: grid;
+
+  grid-template-columns:
+    245px
+    minmax(0, 1fr);
+
+  min-height: 100vh;
+
+  background: #f7fbff;
+}
+
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+.side {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 50;
+
+  width: 245px;
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding:
+    24px
+    14px
+    20px;
+
+  background: #ffffff;
+
+  border-right:
+    1px solid
+    #e1ebf4;
+}
+
+
+/* ==========================================================
+   SIDEBAR LOGO
+   ========================================================== */
+
+.sideBrand {
+  padding:
+    0
+    8px
+    27px;
+
+  text-align: center;
+}
+
+
+.sideLogoBot {
+  margin-bottom: 3px;
+
+  font-size: 42px;
+
+  line-height: 1;
+}
+
+
+.sideBrand b {
+  display: block;
+
+  color: #ff6812;
+
+  font-size: 23px;
+
+  line-height: 1.05;
+
+  font-weight: 900;
+}
+
+
+.sideBrand strong {
+  display: block;
+
+  color: #096be3;
+
+  font-size: 22px;
+
+  line-height: 1.05;
+
+  font-weight: 900;
+}
+
+
+/* ==========================================================
+   SIDEBAR NAVIGATION
+   ========================================================== */
+
+.nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+
+.nav button {
+  width: 100%;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin: 0;
+
+  padding:
+    0
+    16px;
+
+  border: 0;
+
+  border-radius: 16px;
+
+  background: transparent;
+
+  color: #143e76;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+.nav button span {
+  width: 26px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  font-size: 20px;
+}
+
+
+.nav button:hover {
+  transform:
+    translateX(3px);
+
+  background: #edf8ff;
+}
+
+
+.nav button.on {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #3aaeff 0%,
+      #087af0 100%
+    );
+
+  box-shadow:
+    0 7px 14px
+    rgba(
+      8,
+      125,
+      240,
+      0.20
+    );
+}
+
+
+/* ==========================================================
+   SIDEBAR ELIO STATUS
+   ========================================================== */
+
+.sideElio {
+  margin-top: auto;
+
+  min-height: 76px;
+
+  display: grid;
+
+  grid-template-columns:
+    45px
+    1fr
+    10px;
+
+  gap: 9px;
+
+  align-items: center;
+
+  padding: 12px;
+
+  border:
+    1px solid
+    #bfe3fb;
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1fbff,
+      #e3f5ff
+    );
+}
+
+
+.sideElio > span {
+  font-size: 34px;
+}
+
+
+.sideElio b {
+  display: block;
+
+  color: #123f78;
+
+  font-size: 15px;
+}
+
+
+.sideElio small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #52759a;
+
+  font-size: 12px;
+}
+
+
+.sideElio i {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #16c65d;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      22,
+      198,
+      93,
+      0.10
+    );
+}
+
+
+/* ==========================================================
+   MAIN
+   ========================================================== */
+
+.main {
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 28px;
+
+  background: #f7fbff;
+}
+
+
+.main.homeMain {
+  padding: 0;
+
+  overflow: hidden;
+}
+
+
+/* ==========================================================
+   HOME ROOT
+   ========================================================== */
+
+.elioHome {
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding-bottom: 20px;
+
+  overflow: hidden;
+
+  color: #0d3977;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0,
+      #f8fcff 110px,
+      #f7fbff 100%
+    );
+}
+
+
+/* ==========================================================
+   TOP BAR
+   ========================================================== */
+
+.homeTopbar {
+  height: 74px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    10px
+    24px;
+
+  background: #ffffff;
+}
+
+
+.homeTopSpacer {
+  flex: 1;
+}
+
+
+.homeTopActions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* ==========================================================
+   CONNECTED PILL
+   ========================================================== */
+
+.connectedPill {
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    0
+    17px
+    0
+    9px;
+
+  border:
+    1px solid
+    #eaf1f7;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #45678c;
+
+  box-shadow:
+    0 5px 18px
+    rgba(
+      36,
+      106,
+      165,
+      0.11
+    );
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.connectedPill i {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ff9b24;
+}
+
+
+.connectedPill.isConnected i {
+  background: #13c865;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      19,
+      200,
+      101,
+      0.11
+    );
+}
+
+
+.miniElio {
+  font-size: 23px;
+}
+
+
+/* ==========================================================
+   TOP ROUND BUTTONS
+   ========================================================== */
+
+.roundTop {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    #edf2f7;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 18px
+    rgba(
+      36,
+      106,
+      165,
+      0.11
+    );
+
+  cursor: pointer;
+
+  font-size: 19px;
+
+  transition:
+    transform 160ms ease;
+}
+
+
+.roundTop:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+
+.homeHero {
+  position: relative;
+
+  min-height: 350px;
+
+  display: grid;
+
+  grid-template-columns:
+    46%
+    54%;
+
+  align-items: center;
+
+  margin:
+    0
+    18px
+    18px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e7f7ff 0%,
+      #b8ebff 37%,
+      #62cbff 72%,
+      #d5f4ff 100%
+    );
+
+  box-shadow:
+    0 9px 24px
+    rgba(
+      28,
+      108,
+      163,
+      0.11
+    );
+}
+
+
+/* white ground */
+
+.homeHero::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: -4%;
+  right: -4%;
+  bottom: -55px;
+
+  height: 135px;
+
+  border-radius:
+    50%
+    50%
+    0
+    0;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+}
+
+
+/* ==========================================================
+   HERO COPY
+   ========================================================== */
+
+.heroCopy {
+  position: relative;
+
+  z-index: 10;
+
+  padding:
+    34px
+    0
+    40px
+    46px;
+}
+
+
+.hello {
+  color: #0b70f2;
+
+  font-size: 42px;
+
+  line-height: 1;
+
+  font-weight: 1000;
+
+  letter-spacing: -1.5px;
+
+  text-shadow:
+    0 2px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+}
+
+
+.helloBlue {
+  color: #0b70f2;
+}
+
+
+.helloOrange {
+  color: #ff6a12;
+}
+
+
+.helloHand {
+  display: inline-block;
+
+  transform:
+    rotate(-8deg);
+}
+
+
+.heroCopy h1 {
+  margin:
+    15px
+    0
+    12px;
+
+  color: #0a3675;
+
+  font-size: 34px;
+
+  line-height: 1.04;
+
+  font-weight: 900;
+
+  letter-spacing: -1px;
+}
+
+
+.heroCopy p {
+  margin:
+    0
+    0
+    21px;
+
+  color: #4c7094;
+
+  font-size: 19px;
+
+  line-height: 1.3;
+
+  font-weight: 500;
+}
+
+
+/* ==========================================================
+   HERO BUTTONS
+   ========================================================== */
+
+.heroButtons {
+  display: flex;
+
+  gap: 14px;
+}
+
+
+.heroBtn {
+  min-width: 190px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    0
+    16px;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 19px;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 12px
+    rgba(
+      39,
+      93,
+      140,
+      0.19
+    );
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+.heroBtn:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 11px 18px
+    rgba(
+      39,
+      93,
+      140,
+      0.23
+    );
+}
+
+
+.heroBtn.orange {
+  background:
+    linear-gradient(
+      180deg,
+      #ff9c19,
+      #ff6d0c
+    );
+}
+
+
+.heroBtn.blue {
+  background:
+    linear-gradient(
+      180deg,
+      #2eaaff,
+      #0877ee
+    );
+}
+
+
+.heroButtonIcon {
+  display: grid;
+
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
+  font-size: 16px;
+}
+
+
+.heroButtonArrow {
+  margin-left: auto;
+
+  font-size: 27px;
+}
+
+
+/* ==========================================================
+   HERO SCENE
+   ========================================================== */
+
+.heroScene {
+  position: relative;
+
+  z-index: 5;
+
+  height: 100%;
+}
+
+
+/* ==========================================================
+   HERO ELIO
+   ========================================================== */
+
+.heroElio {
+  position: absolute;
+
+  left: 10%;
+  bottom: 26px;
+
+  z-index: 6;
+
+  width: 300px;
+  height: 225px;
+
+  filter:
+    drop-shadow(
+      0 15px 12px
+      rgba(
+        48,
+        93,
+        123,
+        0.23
+      )
+    );
+}
+
+
+.elioBody {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 43px;
+  top: 29px;
+
+  width: 210px;
+  height: 165px;
+
+  border:
+    3px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+
+  border-radius:
+    43%
+    43%
+    34%
+    34%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffefb 0%,
+      #fff7eb 55%,
+      #eadccc 100%
+    );
+
+  box-shadow:
+    inset
+    -15px
+    -10px
+    22px
+    rgba(
+      201,
+      179,
+      153,
+      0.24
+    );
+}
+
+
+.elioTopDetail {
+  position: absolute;
+
+  top: 7px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  color: #ff7a12;
+
+  font-size: 8px;
+
+  font-weight: 900;
+}
+
+
+.elioEyes {
+  position: absolute;
+
+  left: 26px;
+  top: 48px;
+
+  display: flex;
+
+  gap: 19px;
+}
+
+
+.elioEye {
+  position: relative;
+
+  width: 50px;
+  height: 50px;
+
+  border:
+    4px solid
+    #e8dfd2;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 52% 45%,
+      #ffffff 0 6%,
+      #111111 8% 24%,
+      #37aaff 26% 45%,
+      #10223b 47% 61%,
+      #f4f4f4 63%
+    );
+
+  box-shadow:
+    0 3px 6px
+    rgba(
+      0,
+      0,
+      0,
+      0.13
+    );
+}
+
+
+.elioEye span {
+  position: absolute;
+
+  top: 9px;
+  left: 12px;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+
+.elioMouth {
+  position: absolute;
+
+  left: 77px;
+  top: 109px;
+
+  width: 54px;
+  height: 40px;
+
+  overflow: hidden;
+
+  border-radius:
+    13px
+    13px
+    28px
+    28px;
+
+  background: #25150e;
+}
+
+
+.elioMouth span {
+  position: absolute;
+
+  left: 11px;
+  bottom: -5px;
+
+  width: 33px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: #ff7895;
+}
+
+
+.elioName {
+  position: absolute;
+
+  right: 15px;
+  bottom: 43px;
+
+  color: #ff6a0b;
+
+  font-size: 22px;
+
+  font-weight: 1000;
+}
+
+
+.elioSpeaker {
+  position: absolute;
+
+  right: 14px;
+  top: 60px;
+
+  width: 26px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      4px
+    );
+
+  gap: 4px;
+}
+
+
+.elioSpeaker i {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #b6aa9c;
+}
+
+
+.elioTracks {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 13px;
+  right: 0;
+  bottom: 2px;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+
+.elioTrack {
+  position: relative;
+
+  width: 108px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-around;
+
+  overflow: hidden;
+
+  border:
+    5px solid
+    #111111;
+
+  border-radius: 27px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #171717 0 10px,
+      #2b2b2b 10px 18px
+    );
+}
+
+
+.elioTrack span {
+  width: 37px;
+  height: 37px;
+
+  border:
+    4px solid
+    #d9d6d1;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+
+.elioAttention {
+  position: absolute;
+
+  z-index: 9;
+
+  left: 155px;
+  top: -3px;
+
+  width: 75px;
+  height: 50px;
+}
+
+
+.elioAttention i {
+  position: absolute;
+
+  width: 8px;
+  height: 35px;
+
+  border-radius: 999px;
+
+  background: #ff8700;
+}
+
+
+.elioAttention i:nth-child(1) {
+  left: 0;
+
+  transform:
+    rotate(-18deg);
+}
+
+
+.elioAttention i:nth-child(2) {
+  left: 27px;
+  top: -8px;
+}
+
+
+.elioAttention i:nth-child(3) {
+  left: 54px;
+
+  transform:
+    rotate(20deg);
+}
+
+
+/* ==========================================================
+   BOOKS
+   ========================================================== */
+
+.heroBooks {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 7%;
+  bottom: 34px;
+
+  width: 165px;
+}
+
+
+.book {
+  position: relative;
+
+  height: 34px;
+
+  margin-top: -2px;
+
+  border:
+    5px solid
+    #fff0dc;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 4px 0
+    rgba(
+      202,
+      103,
+      11,
+      0.25
+    );
+}
+
+
+.bookBlue {
+  width: 145px;
+
+  margin-left: 10px;
+
+  background: #147df3;
+}
+
+
+.bookBlueSecond {
+  width: 135px;
+
+  margin-left: 18px;
+
+  background: #0872e8;
+}
+
+
+.bookOrange {
+  width: 160px;
+
+  background: #ff8211;
+}
+
+
+.book span {
+  position: absolute;
+
+  left: 15px;
+  right: 10px;
+  top: 9px;
+
+  height: 2px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+}
+
+
+/* ==========================================================
+   BULB
+   ========================================================== */
+
+.heroBulb {
+  position: absolute;
+
+  z-index: 6;
+
+  right: 10%;
+  top: 39px;
+
+  font-size: 72px;
+
+  filter:
+    drop-shadow(
+      0 5px 5px
+      rgba(
+        200,
+        130,
+        31,
+        0.18
+      )
+    );
+}
+
+
+/* ==========================================================
+   STARS
+   ========================================================== */
+
+.heroStar {
+  position: absolute;
+
+  z-index: 4;
+
+  color: #ffbd17;
+
+  font-size: 40px;
+
+  text-shadow:
+    0 4px 4px
+    rgba(
+      211,
+      139,
+      22,
+      0.18
+    );
+}
+
+
+.starOne {
+  left: 40%;
+  top: 33%;
+}
+
+
+.starTwo {
+  right: 30%;
+  top: 28%;
+}
+
+
+.starThree {
+  right: 5%;
+  top: 55%;
+
+  font-size: 32px;
+}
+
+
+/* ==========================================================
+   CLOUDS
+   ========================================================== */
+
+.cloud {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 130px;
+  height: 42px;
+
+  border-radius: 50px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+}
+
+
+.cloud::before,
+.cloud::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+
+.cloud::before {
+  width: 55px;
+  height: 55px;
+
+  left: 20px;
+  top: -25px;
+}
+
+
+.cloud::after {
+  width: 75px;
+  height: 75px;
+
+  right: 10px;
+  top: -38px;
+}
+
+
+.cloudOne {
+  right: 35%;
+  top: 29px;
+}
+
+
+.cloudTwo {
+  right: 2%;
+  top: 115px;
+
+  transform:
+    scale(0.75);
+}
+
+
+.cloudThree {
+  left: -25px;
+  top: 13px;
+
+  transform:
+    scale(0.62);
+}
+
+
+/* ==========================================================
+   FEATURE GRID
+   ========================================================== */
+
+.homeFeatureGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+
+  padding:
+    0
+    18px;
+}
+
+
+/* ==========================================================
+   FEATURE CARD
+   ========================================================== */
+
+.featureCard {
+  position: relative;
+
+  min-height: 132px;
+
+  display: grid;
+
+  grid-template-columns:
+    110px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  padding:
+    18px
+    55px
+    18px
+    20px;
+
+  overflow: hidden;
+
+  border: 0;
+
+  border-radius: 25px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      46,
+      111,
+      159,
+      0.09
+    );
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.featureCard:hover {
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 13px 24px
+    rgba(
+      46,
+      111,
+      159,
+      0.14
+    );
+}
+
+
+.blueCard {
+  background:
+    linear-gradient(
+      135deg,
+      #e7f7ff,
+      #cfefff
+    );
+}
+
+
+.orangeCard {
+  background:
+    linear-gradient(
+      135deg,
+      #fff8ec,
+      #ffead0
+    );
+}
+
+
+/* ==========================================================
+   FEATURE ICON
+   ========================================================== */
+
+.featureIcon {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 65px;
+
+  text-align: center;
+
+  filter:
+    drop-shadow(
+      0 6px 4px
+      rgba(
+        90,
+        111,
+        128,
+        0.17
+      )
+    );
+}
+
+
+.featureContent {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.featureCard h3 {
+  margin:
+    0
+    0
+    9px;
+
+  color: #0b6fe9;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+.orangeCard h3 {
+  color: #ff6711;
+}
+
+
+.featureCard p {
+  margin: 0;
+
+  color: #587493;
+
+  font-size: 16px;
+
+  line-height: 1.25;
+
+  font-weight: 500;
+}
+
+
+/* ==========================================================
+   FEATURE ARROW
+   ========================================================== */
+
+.featureArrow {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 16px;
+  top: 50%;
+
+  width: 43px;
+  height: 43px;
+
+  display: grid;
+
+  place-items: center;
+
+  transform:
+    translateY(-50%);
+
+  border:
+    2px solid
+    #ffffff;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 3px 7px
+    rgba(
+      50,
+      93,
+      124,
+      0.19
+    );
+
+  font-size: 25px;
+
+  font-weight: 900;
+}
+
+
+.blueArrow {
+  background: #1389f6;
+}
+
+
+.orangeArrow {
+  background: #ff7610;
+}
+
+
+/* ==========================================================
+   IDEA CARD
+   ========================================================== */
+
+.ideaCard {
+  position: relative;
+
+  min-height: 125px;
+
+  display: grid;
+
+  grid-template-columns:
+    75px
+    minmax(0, 1fr)
+    180px
+    160px;
+
+  align-items: center;
+
+  margin:
+    16px
+    18px
+    0;
+
+  padding:
+    14px
+    24px;
+
+  overflow: hidden;
+
+  border-radius: 27px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #bfeeff,
+      #edfaff
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      46,
+      111,
+      159,
+      0.10
+    );
+}
+
+
+.ideaCard::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  left: -5%;
+  right: -5%;
+  bottom: -53px;
+
+  height: 80px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5ab94a,
+      #8bd861,
+      #58b943
+    );
+}
+
+
+.ideaIcon {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 49px;
+}
+
+
+.ideaText {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.ideaText h3 {
+  margin:
+    0
+    0
+    9px;
+
+  color: #0a61d6;
+
+  font-size: 22px;
+
+  font-weight: 900;
+}
+
+
+.ideaQuestion {
+  padding:
+    13px
+    22px;
+
+  border-radius: 30px;
+
+  background: #ffffff;
+
+  color: #173f78;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 3px 10px
+    rgba(
+      55,
+      109,
+      146,
+      0.06
+    );
+}
+
+
+.ideaButton {
+  position: relative;
+
+  z-index: 3;
+
+  height: 56px;
+
+  margin-left: 20px;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ff9b1c,
+      #ff6e0c
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 12px
+    rgba(
+      135,
+      80,
+      31,
+      0.17
+    );
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  transition:
+    transform 160ms ease;
+}
+
+
+.ideaButton:hover {
+  transform:
+    translateY(-3px);
+}
+
+
+.ideaButton span {
+  margin-left: 10px;
+
+  font-size: 25px;
+}
+
+
+/* ==========================================================
+   IDEA MINI ELIO
+   ========================================================== */
+
+.ideaMiniElio {
+  position: relative;
+
+  z-index: 2;
+
+  align-self: end;
+
+  height: 105px;
+}
+
+
+.ideaMiniHead {
+  position: absolute;
+
+  left: 50%;
+  bottom: -21px;
+
+  width: 115px;
+  height: 103px;
+
+  transform:
+    translateX(-50%)
+    rotate(4deg);
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius:
+    45%
+    45%
+    34%
+    34%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f1e4d4
+    );
+
+  box-shadow:
+    0 8px 14px
+    rgba(
+      52,
+      86,
+      108,
+      0.16
+    );
+}
+
+
+.ideaMiniEyes {
+  position: absolute;
+
+  left: 21px;
+  top: 28px;
+
+  display: flex;
+
+  gap: 12px;
+}
+
+
+.ideaMiniEyes i {
+  width: 28px;
+  height: 28px;
+
+  border:
+    3px solid
+    #e4ddd3;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #111111 0 25%,
+      #35a8ff 27% 48%,
+      #14233b 50% 63%,
+      #ffffff 65%
+    );
+}
+
+
+.ideaMiniMouth {
+  position: absolute;
+
+  left: 43px;
+  top: 64px;
+
+  width: 32px;
+  height: 20px;
+
+  border-radius:
+    8px
+    8px
+    18px
+    18px;
+
+  background: #20120c;
+}
+
+
+.ideaDecorationStar {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 145px;
+  bottom: 7px;
+
+  color: #ffc11c;
+
+  font-size: 34px;
+
+  transform:
+    rotate(12deg);
+}
+
+
+/* ==========================================================
+   1150px DESKTOP
+   ========================================================== */
+
+@media
+(max-width: 1150px)
+and
+(min-width: 851px) {
+
+  .homeHero {
+    grid-template-columns:
+      54%
+      46%;
+  }
+
+
+  .heroCopy {
+    padding-left: 30px;
+  }
+
+
+  .hello {
+    font-size: 34px;
+  }
+
+
+  .heroCopy h1 {
+    font-size: 30px;
+  }
+
+
+  .heroBtn {
+    min-width: 155px;
+
+    font-size: 15px;
+  }
+
+
+  .heroElio {
+    transform:
+      scale(0.80);
+
+    transform-origin:
+      bottom left;
+  }
+
+
+  .featureCard {
+    grid-template-columns:
+      75px
+      minmax(0, 1fr);
+
+    padding-left: 15px;
+  }
+
+
+  .featureIcon {
+    font-size: 48px;
+  }
+
+
+  .featureCard h3 {
+    font-size: 18px;
+  }
+
+
+  .featureCard p {
+    font-size: 14px;
+  }
+
+
+  .ideaCard {
+    grid-template-columns:
+      60px
+      minmax(0, 1fr)
+      150px
+      100px;
+  }
+
+}
+
+
+/* ==========================================================
+   TEMPORARY MOBILE BEHAVIOUR
+
+   Mobile Home îl facem separat după ce desktop-ul
+   este final.
+   ========================================================== */
+
+@media
+(max-width: 850px) {
+
+  .app {
+    display: block;
+  }
+
+
+  .side {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    padding: 10px;
+  }
+
+
+  .sideBrand,
+  .sideElio {
+    display: none;
+  }
+
+
+  .nav {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .nav button {
+    height: 45px;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    padding:
+      0
+      4px;
+
+    font-size: 11px;
+  }
+
+
+  .nav button span {
+    width: auto;
+
+    font-size: 15px;
+  }
+
+
+  .main,
+  .main.homeMain {
+    padding: 0;
+  }
+
+
+  .homeTopbar {
+    display: none;
+  }
+
+
+  .homeHero {
+    min-height: 570px;
+
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    margin:
+      10px
+      10px
+      12px;
+  }
+
+
+  .heroCopy {
+    padding:
+      28px
+      22px;
+
+    text-align: center;
+  }
+
+
+  .hello {
+    font-size: 34px;
+  }
+
+
+  .heroCopy h1 {
+    font-size: 30px;
+  }
+
+
+  .heroCopy p {
+    font-size: 17px;
+  }
+
+
+  .heroButtons {
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+
+  .heroScene {
+    min-height: 245px;
+  }
+
+
+  .heroElio {
+    left: 50%;
+
+    transform:
+      translateX(-50%)
+      scale(0.82);
+
+    transform-origin:
+      bottom center;
+  }
+
+
+  .heroBooks {
+    right: 5%;
+
+    transform:
+      scale(0.70);
+  }
+
+
+  .heroBulb {
+    right: 7%;
+
+    font-size: 50px;
+  }
+
+
+  .homeFeatureGrid {
+    grid-template-columns: 1fr;
+
+    padding:
+      0
+      10px;
+  }
+
+
+  .ideaCard {
+    grid-template-columns:
+      55px
+      1fr;
+
+    margin:
+      12px
+      10px
+      0;
+
+    padding: 14px;
+  }
+
+
+  .ideaCard > button {
+    grid-column: 2;
+
+    width: 160px;
+
+    margin:
+      12px
+      0
+      0;
+  }
+
+
+  .ideaMiniElio {
+    position: absolute;
+
+    right: 15px;
+    bottom: 8px;
+
+    width: 90px;
+  }
+
+
+  .ideaQuestion {
+    padding:
+      11px
+      14px;
+
+    font-size: 15px;
+  }
+
+}
+/* =========================================================
+   HOME POLISH
+   ========================================================= */
+
+.elioHome a,
+.elioHome a:visited,
+.elioHome a:hover,
+.elioHome a:active {
+  text-decoration: none;
+}
+
+/* HERO BUTTONS */
+
+.heroBtn {
+  text-decoration: none !important;
+}
+
+.heroBtn b {
+  text-decoration: none;
+}
+
+/* FEATURE CARDS */
+
+.featureCard {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.featureCard:hover,
+.featureCard:focus,
+.featureCard:active,
+.featureCard:visited {
+  text-decoration: none !important;
+}
+
+.featureContent h3 {
+  text-decoration: none !important;
+}
+
+.featureContent p {
+  text-decoration: none !important;
+}
+
+/* prettier text */
+
+.featureContent h3 {
+  margin: 0 0 7px;
+
+  font-size: 21px;
+  line-height: 1.1;
+  font-weight: 850;
+
+  letter-spacing: -0.35px;
+}
+
+.featureContent p {
+  margin: 0;
+
+  color: #5d7896;
+
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.blueCard .featureContent h3 {
+  color: #087df0;
+}
+
+.orangeCard .featureContent h3 {
+  color: #ff7012;
+}
+
+/* IDEA BUTTON */
+
+.ideaButton,
+.ideaButton:hover,
+.ideaButton:visited,
+.ideaButton:active {
+  text-decoration: none !important;
+}
+/* =========================================================
+   ELIO DESKTOP V3
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6fbff;
+  color: #123f78;
+}
+
+
+/* =========================================================
+   DESKTOP SHELL
+   ========================================================= */
+
+.desktopShell {
+  display: grid !important;
+  grid-template-columns: 255px minmax(0, 1fr) !important;
+
+  min-height: 100vh;
+
+  background: #f6fbff;
+}
+
+.desktopMain {
+  min-width: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0,
+      #f6fbff 150px
+    );
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.desktopSidebar {
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 16px 18px;
+
+  border-right: 1px solid #e2edf7;
+
+  background: #ffffff;
+
+  z-index: 100;
+}
+
+
+/* REAL LOGO */
+
+.desktopBrand {
+  height: 67px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  text-decoration: none !important;
+}
+
+.desktopBrand img {
+  display: block;
+
+  width: 190px;
+  height: 62px;
+
+  object-fit: contain;
+
+  user-select: none;
+}
+
+
+/* ELIO CARD */
+
+.sidebarElioCard {
+  min-height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 12px 16px;
+
+  margin-bottom: 17px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1f8ff,
+      #eaf5ff
+    );
+}
+
+.sidebarElioCard strong {
+  color: #087df0;
+
+  font-size: 19px;
+  font-weight: 900;
+
+  letter-spacing: 0.3px;
+}
+
+.sidebarElioCard span {
+  margin-top: 3px;
+
+  color: #6d89a5;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.desktopNav {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+
+/* THE SLIDING BLUE BACKGROUND */
+
+.desktopNavSlider {
+  position: absolute;
+
+  z-index: 0;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 56px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #087df0,
+      #20a4ff
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(8, 125, 240, 0.20);
+
+  transition:
+    transform
+    420ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.desktopNavItem {
+  position: relative;
+
+  z-index: 1;
+
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 16px;
+
+  border-radius: 17px;
+
+  color: #174a80;
+
+  text-decoration: none !important;
+
+  font-size: 15px;
+  font-weight: 750;
+
+  transition:
+    color 260ms ease,
+    transform 220ms ease;
+}
+
+.desktopNavItem:hover {
+  color: #087df0;
+
+  transform:
+    translateX(3px);
+}
+
+.desktopNavItem.active {
+  color: #ffffff;
+}
+
+.desktopNavItem.active:hover {
+  color: #ffffff;
+}
+
+
+/* ICONS */
+
+.desktopNavIcon {
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 25px;
+}
+
+.desktopNavIcon svg {
+  width: 21px;
+  height: 21px;
+
+  fill: none;
+
+  stroke: currentColor;
+  stroke-width: 1.9;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.desktopNavLabel {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.sidebarBottom {
+  margin-top: auto;
+}
+
+.sidebarRobotMini {
+  min-height: 67px;
+
+  display: grid;
+
+  grid-template-columns:
+    44px
+    minmax(0, 1fr)
+    10px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border: 1px solid #d9ecfb;
+
+  border-radius: 18px;
+
+  background: #f4faff;
+}
+
+.sidebarRobotIcon {
+  position: relative;
+
+  width: 42px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #e7f3fb
+    );
+
+  box-shadow:
+    0 4px 10px
+    rgba(42, 96, 135, 0.12);
+}
+
+.sidebarRobotIcon span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #087df0;
+
+  box-shadow:
+    inset 0 0 0 3px #dff4ff;
+}
+
+.sidebarRobotText strong {
+  display: block;
+
+  color: #174a80;
+
+  font-size: 13px;
+}
+
+.sidebarRobotText span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #7890a9;
+
+  font-size: 10px;
+}
+
+.sidebarRobotMini > i {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #21c96b;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(33, 201, 107, 0.11);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.desktopHeader {
+  height: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  border-bottom: 1px solid #e4edf5;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+}
+
+.desktopHeaderTitle span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #ff6f11;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+.desktopHeaderTitle h1 {
+  margin: 0;
+
+  color: #103e78;
+
+  font-size: 27px;
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+.desktopHeaderActions {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.desktopRobotStatus {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dce9f3;
+
+  border-radius: 999px;
+
+  color: #7089a3;
+
+  background: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #a8bac9;
+}
+
+.desktopHeaderButton {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid #e1ebf4;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #557695;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.desktopHeaderButton:hover {
+  transform: translateY(-2px);
+
+  color: #087df0;
+
+  border-color: #bfe1fb;
+
+  box-shadow:
+    0 7px 16px
+    rgba(36, 105, 157, 0.10);
+}
+
+.desktopHeaderButton svg {
+  width: 18px;
+  height: 18px;
+
+  fill: none;
+
+  stroke: currentColor;
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   PAGE TRANSITION
+   ========================================================= */
+
+.desktopPageTransition {
+  animation:
+    elioPageIn
+    430ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+@keyframes elioPageIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+.elioHome {
+  padding:
+    18px
+    22px
+    28px;
+
+  background: #f6fbff;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.homeHero {
+  position: relative;
+
+  min-height: 355px;
+
+  display: grid;
+
+  grid-template-columns:
+    45%
+    55%;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eaf9ff 0%,
+      #bcecff 45%,
+      #72d1ff 100%
+    );
+
+  box-shadow:
+    0 8px 24px
+    rgba(40, 108, 155, 0.08);
+}
+
+.homeHero::after {
+  content: "";
+
+  position: absolute;
+
+  left: -4%;
+  right: -4%;
+  bottom: -60px;
+
+  height: 135px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.88);
+}
+
+
+/* HERO COPY */
+
+.heroCopy {
+  position: relative;
+
+  z-index: 10;
+
+  padding-left: 45px;
+}
+
+.heroGreeting {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: clamp(
+    34px,
+    3.1vw,
+    48px
+  );
+
+  line-height: 1;
+
+  font-weight: 950;
+
+  letter-spacing: -1.6px;
+}
+
+.heroGreeting > span:first-child {
+  color: #087df0;
+}
+
+.heroGreeting strong {
+  color: #ff6c10;
+}
+
+.heroWave {
+  font-size: 37px;
+
+  transform: rotate(-8deg);
+}
+
+.heroCopy h2 {
+  margin:
+    16px
+    0
+    10px;
+
+  color: #103e78;
+
+  font-size: clamp(
+    29px,
+    2.45vw,
+    39px
+  );
+
+  line-height: 1.04;
+
+  font-weight: 950;
+
+  letter-spacing: -1px;
+}
+
+.heroCopy p {
+  margin:
+    0
+    0
+    22px;
+
+  color: #54789a;
+
+  font-size: 18px;
+
+  line-height: 1.35;
+}
+
+
+/* HERO BUTTONS */
+
+.heroActions {
+  display: flex;
+
+  gap: 13px;
+}
+
+.heroAction {
+  min-width: 190px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    0
+    13px;
+
+  border: 3px solid #ffffff;
+
+  border-radius: 18px;
+
+  color: #ffffff !important;
+
+  text-decoration: none !important;
+
+  font-size: 16px;
+  font-weight: 850;
+
+  box-shadow:
+    0 7px 14px
+    rgba(38, 90, 132, 0.16);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.heroAction:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 11px 19px
+    rgba(38, 90, 132, 0.20);
+}
+
+.heroActionOrange {
+  background:
+    linear-gradient(
+      135deg,
+      #ff9b1b,
+      #ff6e0c
+    );
+}
+
+.heroActionBlue {
+  background:
+    linear-gradient(
+      135deg,
+      #2eaeff,
+      #087df0
+    );
+}
+
+.heroActionCircle {
+  width: 31px;
+  height: 31px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 31px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  color: inherit;
+}
+
+.heroActionCircle svg {
+  width: 16px;
+  height: 16px;
+
+  fill: none;
+
+  stroke: #087df0;
+  stroke-width: 2;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heroActionOrange
+.heroActionCircle
+svg {
+  stroke: #ff7410;
+}
+
+.heroArrow {
+  margin-left: auto;
+
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   REAL ROBOT PHOTO
+   ========================================================= */
+
+.homeRealElio {
+  position: absolute;
+
+  z-index: 7;
+
+  right: 12%;
+  bottom: 10px;
+
+  width: min(
+    430px,
+    38vw
+  );
+
+  height: 315px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.homeRealElioGlow {
+  position: absolute;
+
+  left: 50%;
+  bottom: 12px;
+
+  width: 75%;
+  height: 36px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(28, 99, 145, 0.15);
+
+  filter: blur(13px);
+}
+
+.homeRealElio img {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  /*
+   * Cu PNG transparent va arăta perfect.
+   * JPG-ul actual încă are fundalul fotografiei.
+   */
+
+  border-radius: 25px;
+
+  filter:
+    drop-shadow(
+      0 15px 14px
+      rgba(37, 84, 118, 0.17)
+    );
+}
+
+
+/* =========================================================
+   HERO DECORATIONS
+   ========================================================= */
+
+.heroCloud {
+  position: absolute;
+
+  z-index: 1;
+
+  width: 115px;
+  height: 36px;
+
+  border-radius: 40px;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+}
+
+.heroCloud::before,
+.heroCloud::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+.heroCloud::before {
+  width: 48px;
+  height: 48px;
+
+  left: 18px;
+  top: -21px;
+}
+
+.heroCloud::after {
+  width: 63px;
+  height: 63px;
+
+  right: 8px;
+  top: -31px;
+}
+
+.heroCloudOne {
+  top: 30px;
+  right: 35%;
+}
+
+.heroCloudTwo {
+  top: 110px;
+  right: 2%;
+
+  transform: scale(.75);
+}
+
+.heroSpark {
+  position: absolute;
+
+  z-index: 3;
+
+  color: #ffb900;
+
+  font-size: 35px;
+}
+
+.heroSparkOne {
+  left: 42%;
+  top: 35%;
+}
+
+.heroSparkTwo {
+  right: 7%;
+  top: 27%;
+}
+
+
+/* BOOKS */
+
+.homeBooks {
+  position: absolute;
+
+  z-index: 6;
+
+  right: 3.5%;
+  bottom: 35px;
+
+  width: 130px;
+}
+
+.homeBook {
+  display: block;
+
+  height: 28px;
+
+  margin-top: 4px;
+
+  border:
+    4px solid
+    #fff4e8;
+
+  border-radius: 7px;
+
+  box-shadow:
+    0 3px 0
+    rgba(100, 80, 60, 0.13);
+}
+
+.homeBookBlue {
+  width: 110px;
+
+  margin-left: 10px;
+
+  background: #1d8cf5;
+}
+
+.homeBookDarkBlue {
+  width: 120px;
+
+  background: #0871dc;
+}
+
+.homeBookOrange {
+  width: 128px;
+
+  background: #ff7b11;
+}
+
+
+/* BULB */
+
+.homeBulb {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 7%;
+  top: 45px;
+
+  width: 55px;
+  height: 55px;
+
+  color: #ffb916;
+}
+
+.homeBulb svg {
+  width: 100%;
+  height: 100%;
+
+  fill:
+    rgba(255, 194, 25, 0.25);
+
+  stroke: #ffae00;
+  stroke-width: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.homeFeatureGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+
+  margin-top: 16px;
+}
+
+.featureCard {
+  min-height: 135px;
+
+  display: grid;
+
+  grid-template-columns:
+    82px
+    minmax(0, 1fr)
+    44px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding:
+    19px
+    17px;
+
+  border-radius: 24px;
+
+  text-decoration: none !important;
+
+  box-shadow:
+    0 7px 18px
+    rgba(44, 105, 148, 0.07);
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.featureCard:hover {
+  transform:
+    translateY(-4px);
+
+  text-decoration: none !important;
+
+  box-shadow:
+    0 13px 25px
+    rgba(44, 105, 148, 0.12);
+}
+
+.featureCard-blue {
+  background:
+    linear-gradient(
+      135deg,
+      #e7f8ff,
+      #cdefff
+    );
+}
+
+.featureCard-orange {
+  background:
+    linear-gradient(
+      135deg,
+      #fff9ef,
+      #ffead0
+    );
+}
+
+
+/* CARD ICON */
+
+.featureCardIcon {
+  width: 72px;
+  height: 72px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 21px;
+
+  background:
+    rgba(255, 255, 255, 0.52);
+}
+
+.featureCardIcon svg {
+  width: 49px;
+  height: 49px;
+
+  fill: none;
+
+  stroke: #087df0;
+  stroke-width: 3;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.featureCard-orange
+.featureCardIcon
+svg {
+  stroke: #ff7410;
+}
+
+
+/* CARD TEXT */
+
+.featureCardCopy h3 {
+  margin:
+    0
+    0
+    7px;
+
+  color: #0875e6;
+
+  font-size: 20px;
+
+  line-height: 1.08;
+
+  font-weight: 900;
+
+  letter-spacing: -0.25px;
+
+  text-decoration: none !important;
+}
+
+.featureCard-orange
+.featureCardCopy
+h3 {
+  color: #ff6c10;
+}
+
+.featureCardCopy p {
+  max-width: 190px;
+
+  margin: 0;
+
+  color: #587796;
+
+  font-size: 14px;
+
+  line-height: 1.35;
+
+  font-weight: 500;
+
+  text-decoration: none !important;
+}
+
+
+/* ARROW */
+
+.featureCardArrow {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    2px solid
+    #ffffff;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background: #108af4;
+
+  box-shadow:
+    0 4px 9px
+    rgba(23, 113, 188, 0.16);
+
+  font-size: 23px;
+
+  transition:
+    transform 200ms ease;
+}
+
+.featureCard-orange
+.featureCardArrow {
+  background: #ff7510;
+}
+
+.featureCard:hover
+.featureCardArrow {
+  transform:
+    translateX(3px);
+}
+
+
+/* =========================================================
+   IDEA OF THE DAY
+   ========================================================= */
+
+.homeIdea {
+  min-height: 116px;
+
+  display: grid;
+
+  grid-template-columns:
+    66px
+    minmax(0, 1fr)
+    160px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 15px;
+
+  padding:
+    15px
+    24px;
+
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dff7ff,
+      #bcecff
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(44, 105, 148, 0.07);
+}
+
+.homeIdeaIcon {
+  width: 53px;
+  height: 53px;
+
+  display: grid;
+  place-items: center;
+}
+
+.homeIdeaIcon svg {
+  width: 50px;
+  height: 50px;
+
+  fill:
+    rgba(255, 184, 0, 0.20);
+
+  stroke: #ffae00;
+  stroke-width: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.homeIdeaCopy h3 {
+  margin:
+    0
+    0
+    7px;
+
+  color: #0875e6;
+
+  font-size: 18px;
+
+  font-weight: 900;
+}
+
+.homeIdeaQuestion {
+  display: inline-flex;
+
+  padding:
+    10px
+    17px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.88);
+
+  color: #345b81;
+
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.homeIdeaButton {
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 17px;
+
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff9a19,
+      #ff6d0c
+    );
+
+  text-decoration: none !important;
+
+  font-size: 16px;
+  font-weight: 850;
+
+  box-shadow:
+    0 6px 12px
+    rgba(150, 91, 31, 0.14);
+
+  transition:
+    transform 180ms ease;
+}
+
+.homeIdeaButton:hover {
+  transform:
+    translateY(-3px);
+
+  text-decoration: none !important;
+}
+
+.homeIdeaButton span {
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   REMOVE ALL HOME LINK UNDERLINES
+   ========================================================= */
+
+.elioHome a,
+.elioHome a:hover,
+.elioHome a:focus,
+.elioHome a:active,
+.elioHome a:visited {
+  text-decoration: none !important;
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media
+(max-width: 1250px)
+and
+(min-width: 901px) {
+
+  .desktopShell {
+    grid-template-columns:
+      225px
+      minmax(0, 1fr)
+      !important;
+  }
+
+  .desktopBrand img {
+    width: 165px;
+  }
+
+  .heroCopy {
+    padding-left: 30px;
+  }
+
+  .heroActions {
+    gap: 8px;
+  }
+
+  .heroAction {
+    min-width: 160px;
+
+    font-size: 14px;
+  }
+
+  .homeRealElio {
+    right: 8%;
+
+    width: 360px;
+  }
+
+  .featureCard {
+    grid-template-columns:
+      62px
+      minmax(0, 1fr)
+      38px;
+
+    gap: 10px;
+
+    padding:
+      15px
+      12px;
+  }
+
+  .featureCardIcon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .featureCardIcon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .featureCardCopy h3 {
+    font-size: 17px;
+  }
+
+  .featureCardCopy p {
+    font-size: 12px;
+  }
+
+  .featureCardArrow {
+    width: 37px;
+    height: 37px;
+  }
+}
+/* =========================================================
+   HOME HERO - CLEAN VERSION
+   ========================================================= */
+
+.homeHero {
+  position: relative;
+
+  min-height: 365px;
+
+  display: grid;
+
+  grid-template-columns:
+    44%
+    56%;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #e9f9ff 0%,
+      #c4efff 38%,
+      #76d2fb 100%
+    );
+
+  box-shadow:
+    0 8px 24px
+    rgba(40, 108, 155, 0.08);
+}
+
+
+/* ZONA ALBĂ DE JOS */
+
+.homeHero::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: -6%;
+  right: -6%;
+  bottom: -73px;
+
+  height: 145px;
+
+  border-radius: 50% 50% 0 0;
+
+  background:
+    rgba(255, 255, 255, 0.90);
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.heroCopy {
+  position: relative;
+
+  z-index: 10;
+
+  align-self: center;
+
+  padding:
+    0
+    0
+    18px
+    58px;
+}
+
+
+.heroGreeting {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  font-size:
+    clamp(
+      38px,
+      3.2vw,
+      52px
+    );
+
+  line-height: 1;
+
+  font-weight: 950;
+
+  letter-spacing: -1.8px;
+}
+
+
+.heroGreeting > span:first-child {
+  color: #087df0;
+}
+
+
+.heroGreeting strong {
+  color: #ff6c10;
+}
+
+
+.heroWave {
+  margin-left: 2px;
+
+  font-size: 37px;
+
+  transform:
+    rotate(-8deg);
+}
+
+
+.heroCopy h2 {
+  max-width: 480px;
+
+  margin:
+    0
+    0
+    17px;
+
+  color: #0c407d;
+
+  font-size:
+    clamp(
+      31px,
+      2.55vw,
+      42px
+    );
+
+  line-height: 1.03;
+
+  font-weight: 950;
+
+  letter-spacing: -1.15px;
+}
+
+
+.heroCopy p {
+  max-width: 480px;
+
+  margin: 0;
+
+  color: #547a9d;
+
+  font-size: 18px;
+
+  line-height: 1.45;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   REAL ELIO
+   ========================================================= */
+
+.homeRealElio {
+  position: absolute;
+
+  z-index: 7;
+
+  right: 13%;
+  bottom: 13px;
+
+  width: 400px;
+  height: 325px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+
+.homeRealElio img {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 0;
+
+  user-select: none;
+
+  filter:
+    drop-shadow(
+      0 18px 15px
+      rgba(37, 84, 118, 0.19)
+    );
+}
+
+
+.homeRealElioGlow {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  bottom: 7px;
+
+  width: 72%;
+  height: 32px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(32, 93, 135, 0.15);
+
+  filter:
+    blur(14px);
+}
+
+
+/* =========================================================
+   DECORAȚIUNI - nu concurează cu robotul
+   ========================================================= */
+
+.homeBooks {
+  right: 3%;
+  bottom: 37px;
+
+  transform:
+    scale(0.9);
+}
+
+
+.homeBulb {
+  right: 5.5%;
+  top: 45px;
+
+  width: 48px;
+  height: 48px;
+}
+
+
+.heroCloudOne {
+  top: 35px;
+  right: 39%;
+}
+
+
+.heroCloudTwo {
+  top: 105px;
+  right: 3%;
+}
+
+
+.heroSparkOne {
+  left: 43%;
+  top: 48%;
+
+  font-size: 31px;
+}
+
+
+.heroSparkTwo {
+  right: 7%;
+  top: 37%;
+
+  font-size: 25px;
+}
+/* =========================================================
+   ELIO HOME — FINAL COMPACT DESKTOP
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  /* =======================================================
+     PAGE / VIEWPORT
+     ======================================================= */
+
+  .desktopShell {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .desktopMain {
+    height: 100vh;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+  }
+
+  .desktopPageTransition {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+
+  /* =======================================================
+     SMALLER HEADER
+     ======================================================= */
+
+  .desktopHeader {
+    height: 60px;
+    min-height: 60px;
+
+    padding: 0 26px;
+
+    flex-shrink: 0;
+  }
+
+  .desktopHeaderTitle span {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+
+  .desktopHeaderTitle h1 {
+    margin: 0;
+
+    font-size: 21px;
+    line-height: 1;
+  }
+
+  .desktopRobotStatus {
+    height: 36px;
+  }
+
+  .desktopHeaderButton {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* =======================================================
+     HOME
+     ======================================================= */
+
+  .elioHome {
+    height: 100%;
+
+    display: grid;
+
+    /*
+      IMPORTANT:
+
+      Hero = 280px FIX
+      Buttons = 128px
+      Idea = 66px
+
+      Nu mai există 1fr pe hero.
+    */
+
+    grid-template-rows:
+      280px
+      128px
+      66px;
+
+    align-content: start;
+
+    gap: 9px;
+
+    padding:
+      7px
+      20px
+      8px;
+
+    overflow: hidden;
+
+    background: #f7fcff;
+  }
+
+
+  /* =======================================================
+     HERO — MUCH SMALLER
+     ======================================================= */
+
+  .homeHero {
+    position: relative;
+
+    width: 100%;
+    height: 280px;
+    min-height: 280px;
+
+    overflow: hidden;
+
+    border-radius: 27px;
+
+    background:
+      linear-gradient(
+        120deg,
+        #e9f9ff 0%,
+        #c4efff 38%,
+        #76d2fb 100%
+      );
+
+    box-shadow:
+      0 7px 20px
+      rgba(40, 108, 155, 0.07);
+  }
+
+
+  /* =======================================================
+     WHITE FLOOR CURVE
+     ======================================================= */
+
+  .homeHero::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: 1;
+
+    left: -5%;
+    right: -5%;
+
+    bottom: -69px;
+
+    height: 105px;
+
+    border-radius: 50% 50% 0 0;
+
+    background:
+      rgba(255, 255, 255, 0.91);
+  }
+
+
+  /* =======================================================
+     HERO TEXT
+     ======================================================= */
+
+  .heroCopy {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 42px;
+    top: 50%;
+
+    width: 46%;
+
+    padding: 0;
+
+    transform:
+      translateY(-50%);
+  }
+
+
+  .heroGreeting {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin:
+      0
+      0
+      10px;
+
+    font-size:
+      clamp(
+        29px,
+        2.25vw,
+        38px
+      );
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing: -1.2px;
+  }
+
+
+  .heroGreeting > span:first-child {
+    color: #087df0;
+  }
+
+
+  .heroGreeting strong {
+    color: #ff6c10;
+  }
+
+
+  .heroWave {
+    margin-left: 1px;
+
+    font-size: 27px;
+
+    transform:
+      rotate(-8deg);
+  }
+
+
+  .heroCopy h2 {
+    max-width: 450px;
+
+    margin:
+      0
+      0
+      8px;
+
+    color: #0c407d;
+
+    font-size:
+      clamp(
+        25px,
+        1.9vw,
+        32px
+      );
+
+    line-height: 1.02;
+
+    font-weight: 950;
+
+    letter-spacing: -0.8px;
+  }
+
+
+  .heroCopy p {
+    max-width: 430px;
+
+    margin: 0;
+
+    color: #547a9d;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 500;
+  }
+
+
+  /* =======================================================
+     ELIO ROBOT
+     ======================================================= */
+
+  .homeRealElio {
+    position: absolute;
+
+    z-index: 7;
+
+    right: 10%;
+
+    /*
+      Aproape lipit de podeaua albă
+    */
+
+    bottom: 7px;
+
+    width: 315px;
+    height: 255px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+  }
+
+
+  .homeRealElio img {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    filter:
+      drop-shadow(
+        0 14px 13px
+        rgba(37, 84, 118, 0.18)
+      );
+  }
+
+
+  .homeRealElioGlow {
+    position: absolute;
+
+    z-index: 1;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 72%;
+    height: 22px;
+
+    transform:
+      translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+      rgba(32, 93, 135, 0.14);
+
+    filter:
+      blur(11px);
+  }
+
+
+  /* =======================================================
+     CLOUDS
+     ======================================================= */
+
+  .heroCloud {
+    position: absolute;
+
+    z-index: 3;
+
+    width: 86px;
+    height: 30px;
+
+    border-radius: 999px;
+
+    background:
+      rgba(255, 255, 255, 0.9);
+  }
+
+
+  .heroCloud::before,
+  .heroCloud::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    border-radius: 50%;
+
+    background:
+      rgba(255, 255, 255, 0.95);
+  }
+
+
+  .heroCloud::before {
+    left: 14px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .heroCloud::after {
+    right: 11px;
+
+    width: 52px;
+    height: 52px;
+  }
+
+
+  .heroCloudOne {
+    top: 18px;
+    right: 39%;
+
+    transform:
+      scale(.68);
+  }
+
+
+  .heroCloudTwo {
+    top: 61px;
+    right: 2%;
+
+    transform:
+      scale(.52);
+  }
+
+
+  /* =======================================================
+     SPARKLES
+     ======================================================= */
+
+  .heroSpark {
+    position: absolute;
+
+    z-index: 4;
+
+    color: #ffb000;
+
+    line-height: 1;
+  }
+
+
+  .heroSparkOne {
+    left: 44%;
+    top: 51%;
+
+    font-size: 23px;
+  }
+
+
+  .heroSparkTwo {
+    right: 7%;
+    top: 37%;
+
+    font-size: 20px;
+  }
+
+
+  /* =======================================================
+     BULB
+     ======================================================= */
+
+  .homeBulb {
+    position: absolute;
+
+    z-index: 5;
+
+    right: 5%;
+    top: 23px;
+
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .homeBulb svg {
+    width: 100%;
+    height: 100%;
+
+    fill: none;
+
+    stroke: #ffae00;
+
+    stroke-width: 4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  /* =======================================================
+     BOOKS
+     ======================================================= */
+
+  .homeBooks {
+    position: absolute;
+
+    z-index: 5;
+
+    right: 2.5%;
+    bottom: 13px;
+
+    width: 94px;
+    height: 74px;
+
+    transform:
+      scale(.60);
+
+    transform-origin:
+      bottom right;
+  }
+
+
+  /* =======================================================
+     ROUND BUTTON ROW
+     ======================================================= */
+
+  .homeCircleActions {
+    width: 100%;
+    height: 128px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        6,
+        minmax(0, 1fr)
+      );
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+      0
+      18px;
+
+    margin: 0;
+
+    overflow: visible;
+  }
+
+
+  .homeCircleAction {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    text-decoration: none !important;
+
+    cursor: pointer;
+  }
+
+
+  /* =======================================================
+     OUTER CIRCLE
+     ======================================================= */
+
+  .homeCircleButton {
+    position: relative;
+
+    width: 88px;
+    height: 88px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    transition:
+      transform 260ms
+        cubic-bezier(.22, 1, .36, 1),
+      box-shadow 260ms ease;
+  }
+
+
+  /* BLUE */
+
+  .homeCircleAction-blue
+  .homeCircleButton {
+    background:
+      linear-gradient(
+        145deg,
+        #e7f8ff 0%,
+        #bceaff 100%
+      );
+
+    border:
+      2px solid
+      rgba(42, 164, 239, .16);
+
+    box-shadow:
+      0 7px 17px
+      rgba(18, 126, 201, .10);
+  }
+
+
+  /* ORANGE */
+
+  .homeCircleAction-orange
+  .homeCircleButton {
+    background:
+      linear-gradient(
+        145deg,
+        #fff8ec 0%,
+        #ffe2b9 100%
+      );
+
+    border:
+      2px solid
+      rgba(255, 135, 25, .15);
+
+    box-shadow:
+      0 7px 17px
+      rgba(223, 120, 21, .09);
+  }
+
+
+  /* =======================================================
+     INNER CIRCLE
+     ======================================================= */
+
+  .homeCircleIcon {
+    width: 54px;
+    height: 54px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+      rgba(255, 255, 255, .94);
+
+    box-shadow:
+      0 4px 11px
+      rgba(50, 100, 135, .07);
+
+    transition:
+      transform 260ms
+        cubic-bezier(.22, 1, .36, 1);
+  }
+
+
+  .homeCircleIcon svg {
+    width: 32px;
+    height: 32px;
+
+    fill: none;
+
+    stroke: #087df0;
+
+    stroke-width: 2.7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  .homeCircleAction-orange
+  .homeCircleIcon svg {
+    stroke: #ff7410;
+  }
+
+
+  /* =======================================================
+     LITTLE ARROW
+     ======================================================= */
+
+  .homeCircleArrow {
+    position: absolute;
+
+    right: -2px;
+    bottom: 5px;
+
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+      2px solid
+      #ffffff;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background: #168cf2;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    box-shadow:
+      0 3px 8px
+      rgba(31, 113, 169, .16);
+
+    transition:
+      transform 220ms ease;
+  }
+
+
+  .homeCircleAction-orange
+  .homeCircleArrow {
+    background: #ff7712;
+  }
+
+
+  /* =======================================================
+     BUTTON TITLES
+     ======================================================= */
+
+  .homeCircleTitle {
+    max-width: 125px;
+
+    color: #0878e8;
+
+    text-align: center;
+
+    font-size: 11.5px;
+
+    line-height: 1.05;
+
+    font-weight: 850;
+
+    letter-spacing: -.15px;
+
+    text-decoration: none !important;
+  }
+
+
+  .homeCircleAction-orange
+  .homeCircleTitle {
+    color: #f56a0b;
+  }
+
+
+  /* =======================================================
+     BUTTON ANIMATIONS
+     ======================================================= */
+
+  .homeCircleAction:hover
+  .homeCircleButton {
+    transform:
+      translateY(-5px)
+      scale(1.06);
+  }
+
+
+  .homeCircleAction-blue:hover
+  .homeCircleButton {
+    box-shadow:
+      0 15px 28px
+      rgba(18, 126, 201, .20);
+  }
+
+
+  .homeCircleAction-orange:hover
+  .homeCircleButton {
+    box-shadow:
+      0 15px 28px
+      rgba(223, 120, 21, .18);
+  }
+
+
+  .homeCircleAction:hover
+  .homeCircleIcon {
+    transform:
+      scale(1.08)
+      rotate(-3deg);
+  }
+
+
+  .homeCircleAction:hover
+  .homeCircleArrow {
+    transform:
+      translateX(3px);
+  }
+
+
+  /* click */
+
+  .homeCircleAction:active
+  .homeCircleButton {
+    transform:
+      translateY(-1px)
+      scale(.97);
+
+    transition-duration: 90ms;
+  }
+
+
+  /* =======================================================
+     IDEA OF THE DAY
+     ======================================================= */
+
+  .homeIdea {
+    position: relative;
+
+    width: 100%;
+
+    height: 66px;
+    min-height: 66px;
+
+    display: grid;
+
+    grid-template-columns:
+      40px
+      minmax(0, 1fr)
+      125px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+
+    padding:
+      7px
+      16px;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      #ccecff;
+
+    border-radius: 18px;
+
+    background:
+      linear-gradient(
+        100deg,
+        #e9f9ff 0%,
+        #d5f2ff 62%,
+        #c5ecff 100%
+      );
+
+    box-shadow:
+      0 5px 14px
+      rgba(44, 105, 148, .055);
+  }
+
+
+  .homeIdeaIcon {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+
+    place-items: center;
+
+    transition:
+      transform 240ms ease;
+  }
+
+
+  .homeIdea:hover
+  .homeIdeaIcon {
+    transform:
+      rotate(-7deg)
+      scale(1.08);
+  }
+
+
+  .homeIdeaIcon svg {
+    width: 34px;
+    height: 34px;
+
+    fill:
+      rgba(255, 183, 0, .18);
+
+    stroke: #ffad00;
+
+    stroke-width: 4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  .homeIdeaCopy {
+    min-width: 0;
+  }
+
+
+  .homeIdeaCopy h3 {
+    margin:
+      0
+      0
+      3px;
+
+    color: #0875e6;
+
+    font-size: 12px;
+
+    font-weight: 850;
+  }
+
+
+  .homeIdeaQuestion {
+    display: inline-block;
+
+    padding:
+      4px
+      10px;
+
+    border-radius: 999px;
+
+    background:
+      rgba(255, 255, 255, .84);
+
+    color: #365e83;
+
+    font-size: 10.5px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+  }
+
+
+  /* =======================================================
+     IDEA BUTTON
+     ======================================================= */
+
+  .homeIdeaButton {
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding:
+      0
+      12px;
+
+    border-radius: 11px;
+
+    color: #ffffff !important;
+
+    background:
+      linear-gradient(
+        135deg,
+        #ff9318,
+        #ff7210
+      );
+
+    font-size: 10.5px;
+
+    font-weight: 800;
+
+    text-decoration: none !important;
+
+    box-shadow:
+      0 5px 11px
+      rgba(226, 112, 18, .16);
+
+    transition:
+      transform 220ms
+        cubic-bezier(.22, 1, .36, 1),
+      box-shadow 220ms ease;
+  }
+
+
+  .homeIdeaButton span {
+    font-size: 15px;
+
+    transition:
+      transform 220ms ease;
+  }
+
+
+  .homeIdeaButton:hover {
+    transform:
+      translateY(-3px)
+      scale(1.03);
+
+    box-shadow:
+      0 9px 17px
+      rgba(226, 112, 18, .24);
+  }
+
+
+  .homeIdeaButton:hover span {
+    transform:
+      translateX(3px);
+  }
+
+
+  .homeIdeaButton:active {
+    transform:
+      scale(.97);
+  }
+
+
+  /* =======================================================
+     NO UNDERLINES
+     ======================================================= */
+
+  .elioHome a,
+  .elioHome a:hover,
+  .elioHome a:focus,
+  .elioHome a:active,
+  .elioHome a:visited {
+    text-decoration: none !important;
+  }
+}
+
+
+/* =========================================================
+   SHORT LAPTOPS
+   ========================================================= */
+
+@media
+(min-width: 901px)
+and
+(max-height: 760px) {
+
+  .desktopHeader {
+    height: 54px;
+    min-height: 54px;
+  }
+
+
+  .elioHome {
+    grid-template-rows:
+      235px
+      108px
+      55px;
+
+    gap: 6px;
+
+    padding:
+      5px
+      14px
+      6px;
+  }
+
+
+  .homeHero {
+    height: 235px;
+    min-height: 235px;
+  }
+
+
+  .heroCopy {
+    left: 34px;
+  }
+
+
+  .heroGreeting {
+    margin-bottom: 7px;
+
+    font-size: 28px;
+  }
+
+
+  .heroCopy h2 {
+    margin-bottom: 5px;
+
+    font-size: 24px;
+  }
+
+
+  .heroCopy p {
+    font-size: 11px;
+  }
+
+
+  .homeRealElio {
+    width: 275px;
+    height: 215px;
+  }
+
+
+  .homeCircleActions {
+    height: 108px;
+  }
+
+
+  .homeCircleButton {
+    width: 74px;
+    height: 74px;
+  }
+
+
+  .homeCircleIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .homeCircleIcon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+
+  .homeCircleArrow {
+    width: 22px;
+    height: 22px;
+
+    font-size: 11px;
+  }
+
+
+  .homeCircleTitle {
+    font-size: 10px;
+  }
+
+
+  .homeIdea {
+    height: 55px;
+    min-height: 55px;
+  }
+}
+/* =========================================================
+   FIX ONLY: IDEA ZILEI DUPA CELE 6 CARDURI
+   NU MODIFICA DESIGNUL
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  /* Home-ul curge normal de sus în jos */
+  .elioHome {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Hero-ul își păstrează dimensiunea actuală */
+  .homeHero {
+    flex-shrink: 0 !important;
+  }
+
+  /* Cele 6 carduri rămân 3 x 2 */
+  .homeFeatureGrid {
+    position: relative !important;
+
+    flex-shrink: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Ideea zilei vine DUPĂ grid, nu peste el */
+  .homeIdea {
+    position: relative !important;
+
+    inset: auto !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    transform: none !important;
+
+    flex-shrink: 0 !important;
+
+    width: 100% !important;
+
+    margin-top: 10px !important;
+
+    z-index: auto !important;
+  }
+}/* =========================================================
+   HERO CONTENT — BETTER COMPOSITION
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  .heroCopy {
+    position: absolute;
+
+    z-index: 10;
+
+    /* nu mai stă lipit în colț */
+    left: 7.5%;
+    top: 50%;
+
+    width: 42%;
+    max-width: 570px;
+
+    padding: 0;
+
+    transform: translateY(-50%);
+  }
+
+
+  /* MIC LABEL */
+
+  .heroMiniLabel {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 9px;
+
+    padding: 5px 10px;
+
+    border: 1px solid
+      rgba(8, 125, 240, .12);
+
+    border-radius: 999px;
+
+    color: #3978aa;
+
+    background:
+      rgba(255, 255, 255, .48);
+
+    font-size: 9px;
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: 1.15px;
+  }
+
+
+  .heroMiniDot {
+    width: 6px;
+    height: 6px;
+
+    flex: 0 0 6px;
+
+    border-radius: 50%;
+
+    background: #ff7812;
+
+    box-shadow:
+      0 0 0 4px
+      rgba(255, 120, 18, .10);
+  }
+
+
+  /* SALUT */
+
+  .heroGreeting {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 0 0 8px;
+
+    font-size:
+      clamp(
+        30px,
+        2.4vw,
+        40px
+      );
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing: -1.3px;
+  }
+
+
+  .heroGreeting > span:first-child {
+    color: #087df0;
+  }
+
+
+  .heroGreeting strong {
+    color: #ff6810;
+  }
+
+
+  .heroWave {
+    margin-left: 2px;
+
+    font-size: 28px;
+
+    transform: rotate(-8deg);
+  }
+
+
+  /* MAIN TITLE */
+
+  .heroCopy h2 {
+    max-width: 520px;
+
+    margin: 0 0 10px;
+
+    color: #0a427f;
+
+    font-size:
+      clamp(
+        27px,
+        2.05vw,
+        35px
+      );
+
+    line-height: .98;
+
+    font-weight: 950;
+
+    letter-spacing: -1px;
+  }
+
+
+  /* DESCRIPTION */
+
+  .heroCopy p {
+    position: relative;
+
+    max-width: 440px;
+
+    margin: 0;
+
+    padding-left: 12px;
+
+    color: #527c9e;
+
+    font-size: 13px;
+
+    line-height: 1.42;
+
+    font-weight: 500;
+  }
+
+
+  /* mica linie portocalie lângă descriere */
+
+  .heroCopy p::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+
+    width: 3px;
+
+    border-radius: 999px;
+
+    background:
+      linear-gradient(
+        #ff9a20,
+        #ff6b0b
+      );
+  }
+
+}
+/* =========================================================
+   ELIO CODE EDITOR
+   Scoped styles - does not affect the rest of the app
+   ========================================================= */
+
+.elioCodeEditor {
+  --motion: #4c97ff;
+  --looks: #9966ff;
+  --sound: #cf63cf;
+  --events: #ffbf00;
+  --control: #ffab19;
+  --sensing: #5cb1d6;
+  --operators: #59c059;
+  --variables: #ff8c1a;
+
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #f5f8fb;
+
+  border-top: 1px solid #d9e2ea;
+
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.elioCodeEditor .codeToolbar {
+  height: 58px;
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #dce5ed;
+}
+
+
+.elioCodeEditor .codeProjectName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.elioCodeEditor .codeProjectName span {
+  color: #8092a5;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.elioCodeEditor .codeProjectName strong {
+  color: #163f70;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+
+.elioCodeEditor .codeToolbarActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.elioCodeEditor .codeToolButton,
+.elioCodeEditor .codeStopButton,
+.elioCodeEditor .codeRunButton {
+  height: 34px;
+
+  padding: 0 14px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background 150ms ease;
+}
+
+
+.elioCodeEditor .codeToolButton {
+  color: #315a80;
+  background: #ffffff;
+  border: 1px solid #d5e0e9;
+}
+
+
+.elioCodeEditor .codeStopButton {
+  color: #d64b4b;
+  background: #fff6f6;
+  border: 1px solid #ffd6d6;
+}
+
+
+.elioCodeEditor .codeRunButton {
+  color: white;
+  background: #36b76f;
+  border: 1px solid #36b76f;
+
+  box-shadow: 0 4px 12px rgba(54, 183, 111, .18);
+}
+
+
+.elioCodeEditor .codeToolbarActions button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   MAIN EDITOR
+   ========================================================= */
+
+.elioCodeEditor .elioCodeBody {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    96px
+    230px
+    minmax(400px, 1fr)
+    250px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CATEGORY COLUMN
+   ========================================================= */
+
+.elioCodeEditor .codeCategories {
+  overflow-y: auto;
+
+  padding: 10px 6px;
+
+  background: #ffffff;
+
+  border-right: 1px solid #dce5ed;
+}
+
+
+.elioCodeEditor .codeCategory {
+  width: 100%;
+
+  min-height: 62px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 6px 3px;
+
+  color: #50677e;
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+.elioCodeEditor .codeCategory:hover {
+  background: #f2f6f9;
+}
+
+
+.elioCodeEditor .codeCategoryActive {
+  background: #edf4fa;
+  color: #173f6d;
+}
+
+
+.elioCodeEditor .codeCategoryDot {
+  width: 20px;
+  height: 20px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset 0 -2px 0 rgba(0,0,0,.08);
+}
+
+
+/* =========================================================
+   BLOCK PALETTE
+   ========================================================= */
+
+.elioCodeEditor .codeBlockPalette {
+  min-width: 0;
+
+  overflow-y: auto;
+
+  padding: 18px 14px 30px;
+
+  background: #ffffff;
+
+  border-right: 1px solid #dce5ed;
+}
+
+
+.elioCodeEditor .codeBlockPalette h2 {
+  margin: 0 0 20px 4px;
+
+  color: #34495e;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+.elioCodeEditor .codePaletteBlocks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   SCRATCH-LIKE BLOCK
+   ========================================================= */
+
+.elioCodeEditor .scratchBlock {
+  position: relative;
+
+  width: fit-content;
+  max-width: 200px;
+
+  padding: 9px 13px;
+
+  color: #ffffff;
+
+  border-radius: 5px;
+
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  cursor: grab;
+
+  user-select: none;
+
+  box-shadow:
+    inset 0 -2px 0 rgba(0,0,0,.18);
+
+  transition:
+    transform 120ms ease,
+    filter 120ms ease;
+}
+
+
+.elioCodeEditor .scratchBlock:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+
+.elioCodeEditor .scratchBlock:active {
+  cursor: grabbing;
+}
+
+
+/* Reporter block */
+
+.elioCodeEditor .scratchBlock-reporter {
+  border-radius: 999px;
+}
+
+
+/* Boolean block */
+
+.elioCodeEditor .scratchBlock-boolean {
+  border-radius: 4px 10px 4px 10px;
+}
+
+
+/* Event hat */
+
+.elioCodeEditor .scratchBlock-hat {
+  padding-top: 13px;
+
+  border-radius: 12px 12px 5px 5px;
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.elioCodeEditor .codeWorkspace {
+  position: relative;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #f7f9fb;
+}
+
+
+.elioCodeEditor .codeWorkspaceGrid {
+  position: absolute;
+  inset: 0;
+
+  opacity: .65;
+
+  background-image:
+    radial-gradient(
+      circle,
+      #d7e0e8 1px,
+      transparent 1px
+    );
+
+  background-size: 20px 20px;
+}
+
+
+.elioCodeEditor .codeWorkspaceHint {
+  position: absolute;
+
+  left: 50%;
+  top: 46%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #9aacbc;
+
+  pointer-events: none;
+}
+
+
+.elioCodeEditor .codeWorkspaceHintIcon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 10px;
+
+  color: #7892aa;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ed;
+  border-radius: 14px;
+
+  font-size: 22px;
+}
+
+
+.elioCodeEditor .codeWorkspaceHint strong {
+  color: #698197;
+
+  font-size: 14px;
+}
+
+
+.elioCodeEditor .codeWorkspaceHint span {
+  margin-top: 3px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ELIO PREVIEW / STAGE
+   ========================================================= */
+
+.elioCodeEditor .elioCodePanel {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 14px;
+
+  background: #ffffff;
+
+  border-left: 1px solid #dce5ed;
+}
+
+
+.elioCodeEditor .elioCodePreview {
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  margin-bottom: 14px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #eaf7ff,
+      #ffffff
+    );
+
+  border: 1px solid #dce8f1;
+  border-radius: 14px;
+}
+
+
+.elioCodeEditor .elioCodePreview img {
+  display: block;
+
+  width: 88%;
+  height: 88%;
+
+  object-fit: contain;
+}
+
+
+.elioCodeEditor .elioCodeStatus {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.elioCodeEditor .elioCodeStatus > div {
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 11px;
+
+  border-bottom: 1px solid #edf2f6;
+}
+
+
+.elioCodeEditor .elioCodeStatus span {
+  color: #8496a7;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.elioCodeEditor .elioCodeStatus strong {
+  color: #244b70;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+.elioCodeEditor .elioDisconnected {
+  color: #e06161 !important;
+}
+
+
+/* =========================================================
+   SMALLER DESKTOP
+   ========================================================= */
+
+@media (max-width: 1200px) and (min-width: 901px) {
+
+  .elioCodeEditor .elioCodeBody {
+    grid-template-columns:
+      82px
+      205px
+      minmax(340px, 1fr)
+      210px;
+  }
+
+  .elioCodeEditor .elioCodePreview {
+    height: 155px;
+  }
+
+}/* =========================================================
+   BLOCKLY — ELIO CODE
+   ========================================================= */
+
+.elioCodeEditor .elioCodeBodyBlockly {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.elioCodeEditor .codeWorkspaceBlockly {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #f7f9fb;
+}
+
+.elioCodeEditor .blocklyHost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.elioCodeEditor .blocklySvg {
+  background: #f7f9fb;
+}
+
+.elioCodeEditor .blocklyToolboxDiv {
+  border-right: 1px solid #dce5ed;
+}
+
+.elioCodeEditor .blocklyTreeRow {
+  height: 46px;
+  margin-bottom: 3px;
+  padding-right: 12px;
+  border-radius: 0 9px 9px 0;
+}
+
+.elioCodeEditor .blocklyTreeLabel {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.elioCodeEditor .blocklyFlyoutBackground {
+  fill: #ffffff;
+  fill-opacity: 1;
+}
+
+.elioCodeEditor .blocklyText {
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.elioCodeEditor .blocklyScrollbarHandle {
+  rx: 5px;
+  ry: 5px;
+}
+/* =========================================================
+   ELIO BLOCKLY — FINAL DESKTOP LAYOUT
+   ========================================================= */
+
+.elioCodeEditor .elioCodeBodyBlockly {
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    250px !important;
+
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   BLOCKLY WORKSPACE
+   ========================================================= */
+
+.elioCodeEditor .codeWorkspaceBlockly {
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  background: #f7fbff;
+}
+
+
+.elioCodeEditor .blocklyHost {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.elioCodeEditor .blocklySvg {
+  background: #f7fbff !important;
+}
+
+
+/* =========================================================
+   TOOLBOX
+   ========================================================= */
+
+.elioCodeEditor .blocklyToolboxDiv {
+  width: 150px !important;
+
+  padding: 9px 8px !important;
+
+  box-sizing: border-box;
+
+  background: #ffffff !important;
+
+  border-right:
+    1px solid #dce6ef !important;
+
+  box-shadow:
+    3px 0 12px rgba(29, 74, 112, .025);
+
+  overflow-x: hidden !important;
+}
+
+
+/* =========================================================
+   CATEGORY BUTTON
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow {
+  position: relative;
+
+  width: 132px !important;
+  height: 43px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  box-sizing: border-box;
+
+  margin:
+    3px
+    0 !important;
+
+  padding:
+    0
+    12px !important;
+
+  border-left:
+    0 !important;
+
+  border-radius:
+    10px !important;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+
+/* =========================================================
+   CATEGORY TEXT
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeLabel {
+  color: #31506d !important;
+
+  font-family: inherit !important;
+
+  font-size: 12px !important;
+
+  font-weight: 750 !important;
+
+  line-height: 1 !important;
+}
+
+
+/* =========================================================
+   REMOVE OLD LITTLE COLOUR STRIP FEEL
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow::before {
+  content: "";
+
+  width: 9px;
+  height: 9px;
+
+  flex:
+    0
+    0
+    9px;
+
+  display: block;
+
+  margin-right: 9px;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.55);
+}
+
+
+/* =========================================================
+   MOTION
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(1) {
+  background:
+    rgba(76,151,255,.14) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(1)::before {
+  background:
+    #4c97ff;
+}
+
+
+/* =========================================================
+   LOOKS
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(2) {
+  background:
+    rgba(153,102,255,.14) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(2)::before {
+  background:
+    #9966ff;
+}
+
+
+/* =========================================================
+   SOUND
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(3) {
+  background:
+    rgba(207,99,207,.14) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(3)::before {
+  background:
+    #cf63cf;
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(4) {
+  background:
+    rgba(255,191,0,.16) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(4)::before {
+  background:
+    #ffbf00;
+}
+
+
+/* =========================================================
+   CONTROL
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(5) {
+  background:
+    rgba(255,171,25,.17) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(5)::before {
+  background:
+    #ffab19;
+}
+
+
+/* =========================================================
+   SENSING
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(6) {
+  background:
+    rgba(92,177,214,.15) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(6)::before {
+  background:
+    #5cb1d6;
+}
+
+
+/* =========================================================
+   OPERATORS
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(7) {
+  background:
+    rgba(89,192,89,.15) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(7)::before {
+  background:
+    #59c059;
+}
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(8) {
+  background:
+    rgba(255,140,26,.15) !important;
+}
+
+.elioCodeEditor
+.blocklyTreeRow:nth-child(8)::before {
+  background:
+    #ff8c1a;
+}
+
+
+/* =========================================================
+   CATEGORY HOVER
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeRow:hover {
+  transform:
+    translateX(2px);
+
+  filter:
+    saturate(1.12);
+
+  box-shadow:
+    0 3px 10px
+    rgba(35,75,110,.07);
+}
+
+
+/* =========================================================
+   SELECTED CATEGORY
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyTreeSelected {
+  transform:
+    translateX(2px);
+
+  box-shadow:
+    0 4px 12px
+    rgba(32,73,110,.11) !important;
+}
+
+
+.elioCodeEditor
+.blocklyTreeSelected
+.blocklyTreeLabel {
+  color:
+    #163f6d !important;
+
+  font-weight:
+    850 !important;
+}
+
+
+/* =========================================================
+   FLYOUT
+   Area containing the actual blocks
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyFlyoutBackground {
+  fill:
+    #ffffff !important;
+
+  fill-opacity:
+    1 !important;
+}
+
+
+.elioCodeEditor
+.blocklyFlyout {
+  filter:
+    drop-shadow(
+      4px 0 6px
+      rgba(29,74,112,.05)
+    );
+}
+
+
+/* =========================================================
+   BLOCK TEXT
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyText {
+  font-family:
+    inherit !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* =========================================================
+   INPUT FIELDS
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyEditableText
+> rect {
+  fill:
+    rgba(255,255,255,.92) !important;
+
+  stroke:
+    rgba(0,0,0,.12) !important;
+
+  stroke-width:
+    1px;
+}
+
+
+.elioCodeEditor
+.blocklyEditableText
+.blocklyText {
+  fill:
+    #31465a !important;
+}
+
+
+/* =========================================================
+   SCROLLBARS
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyScrollbarHandle {
+  rx: 6px;
+  ry: 6px;
+}
+
+
+/* =========================================================
+   TRASHCAN + ZOOM
+   ========================================================= */
+
+.elioCodeEditor
+.blocklyZoom {
+  opacity: .75;
+
+  transition:
+    opacity 150ms ease;
+}
+
+
+.elioCodeEditor
+.blocklyZoom:hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   ELIO RIGHT PANEL
+   ========================================================= */
+
+.elioCodeEditor
+.elioCodePanel {
+  position: relative;
+
+  z-index: 3;
+
+  min-width: 0;
+
+  background:
+    #ffffff;
+
+  border-left:
+    1px solid #dce6ef;
+}
+
+
+/* =========================================================
+   SMALLER DESKTOP
+   ========================================================= */
+
+@media
+(max-width: 1200px)
+and
+(min-width: 901px) {
+
+  .elioCodeEditor
+  .elioCodeBodyBlockly {
+    grid-template-columns:
+      minmax(0, 1fr)
+      215px !important;
+  }
+
+  .elioCodeEditor
+  .blocklyToolboxDiv {
+    width:
+      140px !important;
+  }
+
+  .elioCodeEditor
+  .blocklyTreeRow {
+    width:
+      122px !important;
+  }
+}
+/* =========================================================
+   ELIO BLOCKLY — FRIENDLY BLOCK DETAILS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   BLOCK TEXT
+   --------------------------------------------------------- */
+
+.elioCodeEditor .blocklyText {
+  font-family: inherit !important;
+  font-weight: 750 !important;
+}
+
+
+/* ---------------------------------------------------------
+   EDITABLE FIELDS
+
+   Makes:
+   [60]
+   [1]
+   [Happy]
+   [Hello!]
+
+   feel more like little capsules inside the blocks.
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyEditableText > rect {
+  fill: rgba(255, 255, 255, .96) !important;
+
+  stroke: rgba(20, 50, 80, .14) !important;
+  stroke-width: 1px !important;
+}
+
+
+.elioCodeEditor
+.blocklyEditableText
+.blocklyText {
+  fill: #29445e !important;
+
+  font-weight: 750 !important;
+}
+
+
+/* ---------------------------------------------------------
+   BLOCK DEPTH
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyDraggable {
+  filter:
+    drop-shadow(
+      0 2px 1px
+      rgba(25, 55, 80, .08)
+    );
+}
+
+
+/* ---------------------------------------------------------
+   SELECTED BLOCK
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklySelected
+> .blocklyPath {
+  stroke: rgba(8, 125, 240, .55) !important;
+
+  stroke-width: 2px !important;
+}
+
+
+/* ---------------------------------------------------------
+   BLOCK WHILE DRAGGING
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyDragging {
+  filter:
+    drop-shadow(
+      0 7px 7px
+      rgba(25, 55, 80, .20)
+    );
+}
+
+
+/* ---------------------------------------------------------
+   DROPDOWNS
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyDropDownDiv {
+  border-radius: 12px !important;
+
+  overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   TOOLTIPS
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyTooltipDiv {
+  border-radius: 9px !important;
+
+  border:
+    1px solid
+    #dce7ef !important;
+
+  box-shadow:
+    0 8px 25px
+    rgba(20, 55, 90, .12) !important;
+}
+
+
+/* ---------------------------------------------------------
+   WORKSPACE GRID
+
+   Keep it subtle so colourful blocks remain the focus.
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyMainBackground {
+  stroke: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONNECTION PREVIEW
+
+   Makes it clearer for a child where a block is about
+   to connect while it is being dragged.
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyInsertionMarker {
+  opacity: .42 !important;
+}
+
+
+/* ---------------------------------------------------------
+   FLYOUT BLOCKS
+   --------------------------------------------------------- */
+
+.elioCodeEditor
+.blocklyFlyout
+.blocklyDraggable:hover {
+  filter:
+    brightness(1.03)
+    drop-shadow(
+      0 3px 2px
+      rgba(25, 55, 80, .10)
+    );
+}
+/* =========================================================
+   ELIO CODE — FRIENDLY EDUCATIONAL UI
+   ========================================================= */
+
+.elioCodeEditor {
+  background:
+    linear-gradient(
+      145deg,
+      #f4faff 0%,
+      #fbfdff 55%,
+      #fff9f3 100%
+    ) !important;
+}
+
+
+/* =========================================================
+   FRIENDLY TOOLBAR
+   ========================================================= */
+
+.elioCodeEditor .codeToolbarFriendly {
+  height: 68px;
+  min-height: 68px;
+
+  padding: 0 20px;
+
+  background: rgba(255,255,255,.94);
+
+  border-bottom: 1px solid #e4eef6;
+
+  box-shadow:
+    0 4px 18px rgba(38,84,120,.035);
+}
+
+
+.elioCodeEditor .codeProjectName {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+
+.elioCodeEditor .codeProjectIcon {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e5f4ff,
+      #f2f9ff
+    );
+
+  font-size: 18px;
+}
+
+
+.elioCodeEditor .codeProjectName > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.elioCodeEditor .codeProjectName span {
+  color: #88a0b5;
+
+  font-size: 9px;
+  font-weight: 850;
+
+  letter-spacing: 1px;
+}
+
+
+.elioCodeEditor .codeProjectName strong {
+  color: #123f78;
+
+  font-size: 15px;
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   TOOLBAR BUTTONS
+   ========================================================= */
+
+.elioCodeEditor .codeToolbarActions {
+  gap: 8px;
+}
+
+
+.elioCodeEditor .codeToolButton,
+.elioCodeEditor .codeStopButton,
+.elioCodeEditor .codeRunButton {
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 0 14px;
+
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+
+.elioCodeEditor .codeToolButton {
+  color: #315a80;
+
+  background: #fff;
+
+  border: 1px solid #dce8f2;
+}
+
+
+.elioCodeEditor .codeStopButton {
+  color: #e05353;
+
+  background: #fff4f4;
+
+  border: 1px solid #ffd8d8;
+}
+
+
+.elioCodeEditor .codeRunButton {
+  min-width: 82px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #36c979,
+      #28ad67
+    );
+
+  border: 0;
+
+  box-shadow:
+    0 6px 16px rgba(40,173,103,.20);
+}
+
+
+.elioCodeEditor
+.codeToolbarActions button:hover {
+  transform: translateY(-2px);
+}
+
+
+.elioCodeEditor
+.codeRunButton:hover {
+  box-shadow:
+    0 9px 20px rgba(40,173,103,.25);
+}
+
+
+/* =========================================================
+   MAIN EDITOR SPACING
+   ========================================================= */
+
+.elioCodeEditor .elioCodeBodyBlockly {
+  gap: 12px;
+
+  padding:
+    12px
+    12px
+    12px
+    0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f1f8fe,
+      #f8fbfe
+    );
+}
+
+
+/* =========================================================
+   WORKSPACE = LARGE FRIENDLY CARD
+   ========================================================= */
+
+.elioCodeEditor .codeWorkspaceBlockly {
+  border-radius:
+    0
+    18px
+    18px
+    0;
+
+  border:
+    1px solid #deebf4;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 28px
+    rgba(41,83,115,.055);
+}
+
+
+.elioCodeEditor .blocklySvg {
+  background:
+    #fbfdff !important;
+}
+
+
+.elioCodeEditor .blocklyMainBackground {
+  fill:
+    #fbfdff !important;
+}
+
+
+/* =========================================================
+   TOOLBOX
+   ========================================================= */
+
+.elioCodeEditor .blocklyToolboxDiv {
+  background:
+    rgba(255,255,255,.98) !important;
+
+  border-right:
+    1px solid #e2edf5 !important;
+}
+
+
+.elioCodeEditor .blocklyTreeRow {
+  height: 44px !important;
+
+  margin:
+    4px
+    0 !important;
+
+  border-radius:
+    0
+    13px
+    13px
+    0 !important;
+}
+
+
+.elioCodeEditor .blocklyTreeLabel {
+  font-size: 12px !important;
+
+  font-weight: 800 !important;
+}
+
+
+/* selected category feels like a real button */
+
+.elioCodeEditor .blocklyTreeSelected {
+  box-shadow:
+    0 4px 12px
+    rgba(40,80,115,.09) !important;
+}
+
+
+/* =========================================================
+   FLYOUT
+   ========================================================= */
+
+.elioCodeEditor .blocklyFlyoutBackground {
+  fill: #ffffff !important;
+
+  fill-opacity: .98 !important;
+}
+
+
+/* =========================================================
+   RIGHT ELIO PANEL
+   ========================================================= */
+
+.elioCodeEditor .elioCodePanel {
+  padding: 16px;
+
+  border: 1px solid #deebf4;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fafdff 100%
+    );
+
+  box-shadow:
+    0 8px 28px
+    rgba(41,83,115,.055);
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   ELIO PANEL HEADER
+   ========================================================= */
+
+.elioCodeEditor .elioPanelHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+
+.elioCodeEditor .elioPanelEyebrow {
+  color: #90a5b7;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  letter-spacing: 1.3px;
+}
+
+
+.elioCodeEditor .elioPanelHeading h3 {
+  margin: 1px 0 0;
+
+  color: #0b5db5;
+
+  font-size: 20px;
+  font-weight: 950;
+
+  letter-spacing: -.5px;
+}
+
+
+.elioCodeEditor .elioPanelWave {
+  margin-left: 5px;
+
+  font-size: 15px;
+}
+
+
+.elioCodeEditor .elioConnectionDot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #ef6464;
+
+  box-shadow:
+    0 0 0 5px rgba(239,100,100,.10);
+}
+
+
+/* =========================================================
+   ROBOT PREVIEW
+   ========================================================= */
+
+.elioCodeEditor .elioCodePreview {
+  position: relative;
+
+  height: 195px;
+
+  margin-bottom: 12px;
+
+  overflow: hidden;
+
+  border: 0;
+
+  border-radius: 17px;
+
+  background:
+    radial-gradient(
+      circle at 50% 75%,
+      #ffffff 0%,
+      #edf8ff 60%,
+      #e3f4ff 100%
+    );
+}
+
+
+.elioCodeEditor .elioCodePreview img {
+  position: relative;
+
+  z-index: 3;
+
+  width: 88%;
+  height: 88%;
+
+  object-fit: contain;
+
+  transition:
+    transform .25s ease;
+}
+
+
+.elioCodeEditor .elioCodePreview:hover img {
+  transform:
+    translateY(-3px)
+    rotate(-1deg);
+}
+
+
+.elioCodeEditor .elioPreviewBubble {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.52);
+}
+
+
+.elioCodeEditor .elioBubbleOne {
+  width: 72px;
+  height: 72px;
+
+  left: -20px;
+  top: 12px;
+}
+
+
+.elioCodeEditor .elioBubbleTwo {
+  width: 48px;
+  height: 48px;
+
+  right: -10px;
+  bottom: 8px;
+}
+
+
+.elioCodeEditor .elioPreviewSparkle {
+  position: absolute;
+
+  z-index: 2;
+
+  color: #ff9b21;
+}
+
+
+.elioCodeEditor .elioSparkleOne {
+  left: 15px;
+  bottom: 23px;
+
+  font-size: 18px;
+}
+
+
+.elioCodeEditor .elioSparkleTwo {
+  right: 17px;
+  top: 20px;
+
+  color: #238df2;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   STATUS PILL
+   ========================================================= */
+
+.elioCodeEditor .elioStatusPill {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px 11px;
+
+  margin-bottom: 10px;
+
+  border-radius: 12px;
+}
+
+
+.elioCodeEditor .elioStatusOffline {
+  background: #fff4f4;
+}
+
+
+.elioCodeEditor .elioStatusDot {
+  width: 8px;
+  height: 8px;
+
+  flex: 0 0 8px;
+
+  border-radius: 50%;
+
+  background: #ed6262;
+}
+
+
+.elioCodeEditor .elioStatusPill div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.elioCodeEditor .elioStatusPill small {
+  color: #a48b8b;
+
+  font-size: 7px;
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+
+.elioCodeEditor .elioStatusPill strong {
+  color: #d85454;
+
+  font-size: 11px;
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   ROBOT STATS
+   ========================================================= */
+
+.elioCodeEditor .elioCodeStats {
+  display: grid;
+
+  gap: 7px;
+}
+
+
+.elioCodeEditor .elioStatCard {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 52px;
+
+  padding: 8px 10px;
+
+  border:
+    1px solid #e6eff6;
+
+  border-radius:
+    12px;
+
+  background:
+    #ffffff;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+
+.elioCodeEditor .elioStatCard:hover {
+  transform:
+    translateX(2px);
+
+  box-shadow:
+    0 4px 12px
+    rgba(34,75,110,.06);
+}
+
+
+.elioCodeEditor .elioStatIcon {
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 32px;
+
+  border-radius: 10px;
+
+  background: #eef8ff;
+
+  font-size: 15px;
+}
+
+
+.elioCodeEditor .elioStatCard > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.elioCodeEditor .elioStatCard span {
+  color: #91a3b3;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+
+.elioCodeEditor .elioStatCard strong {
+  margin-top: 1px;
+
+  color: #184a78;
+
+  font-size: 12px;
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   TIP
+   ========================================================= */
+
+.elioCodeEditor .elioCodeTip {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8e8,
+      #fffdf6
+    );
+
+  border:
+    1px solid #ffedbd;
+}
+
+
+.elioCodeEditor .elioCodeTip > span {
+  font-size: 15px;
+}
+
+
+.elioCodeEditor .elioCodeTip p {
+  margin: 0;
+
+  color: #8b7041;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  font-weight: 650;
+}
+/* =========================================================
+   ELIO BLOCKLY — BIG FRIENDLY CATEGORY MENU
+   ========================================================= */
+
+/* Bara întreagă din stânga */
+.elioCodeEditor .blocklyToolboxDiv {
+  width: 190px !important;
+
+  padding: 14px 10px !important;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbff 100%
+    ) !important;
+
+  border-right: 1px solid #dceaf5 !important;
+
+  box-shadow:
+    5px 0 18px rgba(31, 78, 115, .04);
+
+  overflow-x: hidden !important;
+}
+
+
+/* =========================================================
+   TOATE CATEGORIILE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow {
+  position: relative;
+
+  width: 168px !important;
+  height: 54px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  box-sizing: border-box;
+
+  margin: 6px 0 !important;
+
+  padding: 0 14px !important;
+
+  border: 1px solid transparent !important;
+  border-left: 0 !important;
+
+  border-radius: 15px !important;
+
+  cursor: pointer;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease;
+}
+
+
+/* Text mai mare */
+.elioCodeEditor .blocklyTreeLabel {
+  color: #244b70 !important;
+
+  font-family: inherit !important;
+
+  font-size: 15px !important;
+  line-height: 1 !important;
+
+  font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   ICON / CERC COLORAT
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow::before {
+  width: 30px !important;
+  height: 30px !important;
+
+  flex: 0 0 30px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  margin-right: 10px !important;
+
+  border-radius: 10px !important;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 900;
+
+  box-shadow:
+    0 4px 9px rgba(25, 65, 100, .10);
+}
+
+
+/* =========================================================
+   MOTION — BLUE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(1) {
+  background: #eaf4ff !important;
+  border-color: #d6eaff !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(1)::before {
+  content: "↗";
+  background: #4c97ff;
+}
+
+
+/* =========================================================
+   LOOKS — PURPLE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(2) {
+  background: #f2ebff !important;
+  border-color: #e5d8ff !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(2)::before {
+  content: "☺";
+  background: #9966ff;
+}
+
+
+/* =========================================================
+   SOUND — PINK
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(3) {
+  background: #fbeafb !important;
+  border-color: #f3d7f3 !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(3)::before {
+  content: "♪";
+  background: #cf63cf;
+}
+
+
+/* =========================================================
+   EVENTS — YELLOW
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(4) {
+  background: #fff7d9 !important;
+  border-color: #ffecad !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(4)::before {
+  content: "⚡";
+  background: #ffbf00;
+}
+
+
+/* =========================================================
+   CONTROL — ORANGE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(5) {
+  background: #fff0dc !important;
+  border-color: #ffe0b5 !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(5)::before {
+  content: "↻";
+  background: #ffab19;
+}
+
+
+/* =========================================================
+   SENSING — LIGHT BLUE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(6) {
+  background: #e8f7fc !important;
+  border-color: #d2eff8 !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(6)::before {
+  content: "?";
+  background: #5cb1d6;
+}
+
+
+/* =========================================================
+   OPERATORS — GREEN
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(7) {
+  background: #eaf8ea !important;
+  border-color: #d5efd5 !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(7)::before {
+  content: "+";
+  background: #59c059;
+}
+
+
+/* =========================================================
+   VARIABLES — ORANGE
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:nth-child(8) {
+  background: #fff0e2 !important;
+  border-color: #ffe0c1 !important;
+}
+
+.elioCodeEditor .blocklyTreeRow:nth-child(8)::before {
+  content: "x";
+  background: #ff8c1a;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeRow:hover {
+  transform:
+    translateX(4px)
+    scale(1.015);
+
+  filter: saturate(1.08);
+
+  box-shadow:
+    0 6px 15px
+    rgba(31, 74, 108, .09);
+}
+
+
+/* =========================================================
+   SELECTED CATEGORY
+   ========================================================= */
+
+.elioCodeEditor .blocklyTreeSelected {
+  transform: translateX(4px);
+
+  box-shadow:
+    0 7px 18px
+    rgba(30, 74, 110, .12) !important;
+
+  border-color:
+    rgba(30, 90, 140, .12) !important;
+}
+
+
+.elioCodeEditor
+.blocklyTreeSelected
+.blocklyTreeLabel {
+  color: #123f70 !important;
+
+  font-weight: 900 !important;
+}
+/* =========================================================
+   ELIO TOOLBOX — CATEGORY CARDS
+   ========================================================= */
+
+.elioCodeEditor .blocklyToolboxDiv {
+  width: 210px !important;
+
+  padding: 16px 12px !important;
+
+  box-sizing: border-box !important;
+
+  background: #ffffff !important;
+
+  border-right: 1px solid #e1ebf4 !important;
+}
+
+
+/* ---------------------------------------------------------
+   BASE CARD
+   --------------------------------------------------------- */
+
+.elioCodeEditor .elioCategoryCard {
+  width: 184px !important;
+  height: 58px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  margin: 6px 0 !important;
+
+  padding: 0 14px !important;
+
+  border: 1px solid transparent !important;
+  border-left: 1px solid transparent !important;
+
+  border-radius: 16px !important;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease !important;
+}
+
+
+/* text */
+
+.elioCodeEditor
+.elioCategoryCard
+.blocklyTreeLabel {
+  color: #244a70 !important;
+
+  font-family: inherit !important;
+
+  font-size: 15px !important;
+
+  font-weight: 850 !important;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.elioCodeEditor .elioCategoryCard::before {
+  width: 34px !important;
+  height: 34px !important;
+
+  flex: 0 0 34px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  margin-right: 11px !important;
+
+  border-radius: 11px !important;
+
+  color: white !important;
+
+  font-size: 17px !important;
+  font-weight: 900 !important;
+
+  line-height: 1 !important;
+
+  box-shadow:
+    0 4px 10px
+    rgba(25, 60, 90, .10);
+}
+
+
+/* =========================================================
+   MOTION
+   ========================================================= */
+
+.elioCodeEditor .elioCatMotion {
+  background: #eaf4ff !important;
+  border-color: #d6e9ff !important;
+}
+
+.elioCodeEditor .elioCatMotion::before {
+  content: "↗" !important;
+  background: #4c97ff !important;
+}
+
+
+/* =========================================================
+   LOOKS
+   ========================================================= */
+
+.elioCodeEditor .elioCatLooks {
+  background: #f2ebff !important;
+  border-color: #e5d8ff !important;
+}
+
+.elioCodeEditor .elioCatLooks::before {
+  content: "☺" !important;
+  background: #9966ff !important;
+}
+
+
+/* =========================================================
+   SOUND
+   ========================================================= */
+
+.elioCodeEditor .elioCatSound {
+  background: #fbeafb !important;
+  border-color: #f2d7f2 !important;
+}
+
+.elioCodeEditor .elioCatSound::before {
+  content: "♪" !important;
+  background: #cf63cf !important;
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+.elioCodeEditor .elioCatEvents {
+  background: #fff8dc !important;
+  border-color: #ffedb2 !important;
+}
+
+.elioCodeEditor .elioCatEvents::before {
+  content: "⚡" !important;
+  background: #ffbf00 !important;
+}
+
+
+/* =========================================================
+   CONTROL
+   ========================================================= */
+
+.elioCodeEditor .elioCatControl {
+  background: #fff1df !important;
+  border-color: #ffe0b7 !important;
+}
+
+.elioCodeEditor .elioCatControl::before {
+  content: "↻" !important;
+  background: #ffab19 !important;
+}
+
+
+/* =========================================================
+   SENSING
+   ========================================================= */
+
+.elioCodeEditor .elioCatSensing {
+  background: #e8f7fc !important;
+  border-color: #d2eff8 !important;
+}
+
+.elioCodeEditor .elioCatSensing::before {
+  content: "?" !important;
+  background: #5cb1d6 !important;
+}
+
+
+/* =========================================================
+   OPERATORS
+   ========================================================= */
+
+.elioCodeEditor .elioCatOperators {
+  background: #eaf8ea !important;
+  border-color: #d5efd5 !important;
+}
+
+.elioCodeEditor .elioCatOperators::before {
+  content: "+" !important;
+  background: #59c059 !important;
+}
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+.elioCodeEditor .elioCatVariables {
+  background: #fff0e3 !important;
+  border-color: #ffe0c3 !important;
+}
+
+.elioCodeEditor .elioCatVariables::before {
+  content: "x" !important;
+  background: #ff8c1a !important;
+}
+
+
+/* =========================================================
+   REMOVE BLOCKLY'S ORIGINAL COLOURED STRIP
+   ========================================================= */
+
+.elioCodeEditor
+.elioCategoryCard {
+  border-left-width: 1px !important;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.elioCodeEditor
+.elioCategoryCard:hover {
+  transform:
+    translateX(4px)
+    scale(1.015) !important;
+
+  filter: saturate(1.08);
+
+  box-shadow:
+    0 7px 18px
+    rgba(29, 72, 108, .10) !important;
+}
+
+
+/* =========================================================
+   SELECTED
+   ========================================================= */
+
+.elioCodeEditor
+.elioCategoryCard.blocklyTreeSelected {
+  transform: translateX(4px) !important;
+
+  box-shadow:
+    0 8px 20px
+    rgba(29, 72, 108, .13) !important;
+}
+
+
+.elioCodeEditor
+.elioCategoryCard.blocklyTreeSelected
+.blocklyTreeLabel {
+  color: #123f70 !important;
+
+  font-weight: 900 !important;
+}
+.blocklyToolboxDiv {
+  width: 220px !important;
+  background: red !important;
+}
+
+.blocklyTreeRow {
+  height: 60px !important;
+  background: yellow !important;
+  border-radius: 16px !important;
+  margin: 8px !important;
+}
+
+.blocklyTreeLabel {
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+.elioVisualCategories {
+  padding:
+    10px
+    12px
+    10px;
+}
+
+.elioVisualCategoryList {
+  gap: 6px;
+}
+
+.elioVisualCategory {
+  min-height: 52px;
+
+  grid-template-columns:
+    34px
+    minmax(0, 1fr)
+    14px;
+
+  gap: 9px;
+
+  padding:
+    0
+    10px;
+
+  border-radius:
+    15px;
+}
+
+.elioVisualCategoryIcon {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+}
+
+.elioVisualCategoryLabel {
+  font-size: 13px;
+}
+
+.elioVisualCategoryArrow {
+  font-size: 21px;
+}
+
+.elioVisualCategoryList {
+  gap: 6px;
+}
+/* =========================================================
+   ELIO JOYSTICK
+   ========================================================= */
+
+.elioJoystickSection {
+  width: min(100%, 460px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 18px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.elioJoystickIntro {
+  width: 100%;
+
+  margin-bottom: 16px;
+
+  text-align: center;
+}
+
+.elioJoystickIntro > span {
+  display: block;
+
+  color: #ff7a12;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+}
+
+.elioJoystickIntro strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #174e7d;
+
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.elioJoystickIntro p {
+  margin: 5px 0 0;
+
+  color: #7892aa;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   JOYSTICK BASE
+   ========================================================= */
+
+.elioJoystickBase {
+  position: relative;
+
+  width: 270px;
+  height: 270px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  cursor: grab;
+
+  touch-action: none;
+  user-select: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #edf7ff 58%,
+      #dceeff 100%
+    );
+
+  border: 1px solid #c9e2f6;
+
+  box-shadow:
+    inset 0 0 0 11px rgba(255, 255, 255, 0.65),
+    0 16px 32px rgba(35, 88, 128, 0.14);
+
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.elioJoystickBase:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   INNER RING
+   ========================================================= */
+
+.elioJoystickRing {
+  position: absolute;
+
+  inset: 28px;
+
+  border: 1px dashed #bcd9ee;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ARROWS
+   ========================================================= */
+
+.elioJoystickArrow {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 11px;
+
+  color: #76a3c5;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  font-size: 18px;
+  font-weight: 900;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 4px 10px rgba(38, 81, 116, 0.06);
+}
+
+.elioJoystickArrowUp {
+  top: 18px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.elioJoystickArrowDown {
+  bottom: 18px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.elioJoystickArrowLeft {
+  left: 18px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.elioJoystickArrowRight {
+  right: 18px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+
+/* =========================================================
+   CENTER POINT
+   ========================================================= */
+
+.elioJoystickCenterDot {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 9px;
+  height: 9px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #b4d1e7;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MOVABLE KNOB
+   ========================================================= */
+
+.elioJoystickKnob {
+  position: absolute;
+
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+
+  width: 80px;
+  height: 80px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  z-index: 5;
+
+  will-change: transform;
+
+  pointer-events: none;
+}
+
+.elioJoystickKnobInner {
+  width: 80px;
+  height: 80px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #36a6ff 0%,
+      #087df0 65%,
+      #006ed8 100%
+    );
+
+  border: 5px solid #ffffff;
+
+  box-shadow:
+    0 12px 25px rgba(8, 125, 240, 0.32),
+    inset 0 3px 5px rgba(255, 255, 255, 0.25);
+}
+
+.elioJoystickKnobInner span {
+  font-size: 23px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   ACTIVE DIRECTION GLOW
+   ========================================================= */
+
+.elioJoystick-forward {
+  box-shadow:
+    inset 0 48px 60px rgba(76, 151, 255, 0.17),
+    0 16px 32px rgba(35, 88, 128, 0.14);
+}
+
+.elioJoystick-backward {
+  box-shadow:
+    inset 0 -48px 60px rgba(76, 151, 255, 0.17),
+    0 16px 32px rgba(35, 88, 128, 0.14);
+}
+
+.elioJoystick-left {
+  box-shadow:
+    inset 48px 0 60px rgba(255, 122, 18, 0.14),
+    0 16px 32px rgba(35, 88, 128, 0.14);
+}
+
+.elioJoystick-right {
+  box-shadow:
+    inset -48px 0 60px rgba(255, 122, 18, 0.14),
+    0 16px 32px rgba(35, 88, 128, 0.14);
+}
+
+
+/* =========================================================
+   STATUS UNDER JOYSTICK
+   ========================================================= */
+
+.elioJoystickState {
+  margin-top: 16px;
+
+  display: grid;
+
+  grid-template-columns: auto auto;
+
+  align-items: center;
+  justify-content: center;
+
+  column-gap: 7px;
+
+  color: #174e7d;
+}
+
+.elioJoystickStateDot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #b7c8d5;
+}
+
+.elioJoystickStateDot.active {
+  background: #27b875;
+
+  box-shadow:
+    0 0 0 4px rgba(39, 184, 117, 0.12);
+}
+
+.elioJoystickState strong {
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.elioJoystickState > span:last-child {
+  grid-column: 1 / -1;
+
+  margin-top: 4px;
+
+  color: #879caf;
+
+  font-size: 9px;
+
+  text-align: center;
+}
