@@ -25,6 +25,7 @@ Utilizatorul vorbește română și nu e programator: explică pașii simplu, î
   - istoric separat pe fiecare subiect, doar în memorie: ieșirea din fila Asistent șterge toate conversațiile (subiectul ales rămâne în `sessionStorage` `elio-chat-topic`); schimbarea subiectului oprește și șterge răspunsul care se încărca
   - cu vocea pornită, textul fiecărei părți apare când începe vocea ei (`onplaying`); fără voce de la server/eroare → textul apare tot; siguranță 25 s
   - microfon push-to-talk (ține apăsat, eliberezi = trimite), `hush()` oprește vocea
+  - recunoaștere vocală: la apăsare pornesc împreună SpeechRecognition (rezervă) și o înregistrare (`getUserMedia` + `MediaRecorder`, max 60 s). La eliberare: înregistrarea → WAV 16 kHz mono (`toWav16k`, scris de mână) → `POST /api/transcribe?lang=`. Se folosește textul Gemini; dacă e gol/eroare → textul browserului; ambele goale → nu trimite nimic. Cât așteaptă: „Te ascult...”. Microfonul se eliberează după fiecare înregistrare; audio nu se salvează nicăieri. Merge și pe iPhone (fără SpeechRecognition).
   - voce pe telefon = WAV de la backend (playbackRate 1, viteza se reglează doar în backend); „Robotul vorbește” (setare) → trimite `SAY:<id>` prin BLE
 - `.env.local`: `NEXT_PUBLIC_API_BASE_URL=http://localhost:8000`
 
@@ -32,6 +33,7 @@ Utilizatorul vorbește română și nu e programator: explică pașii simplu, î
 - `.env` (NU se pune pe GitHub, nu se afișează cheia): `GEMINI_API_KEY`, `GEMINI_MODEL=gemini-3.5-flash-lite`,
   `GEMINI_FALLBACK_MODEL=gemini-3.6-flash`, `ALLOWED_ORIGINS=http://localhost:3001`. Gemini e folosit DOAR pentru text.
 - Gemini e lent pe planul gratuit (4–30 s); setarea de „thinking” a încetinit, e oprită implicit.
+- `POST /api/transcribe?lang=ro|en`: corp = WAV brut (`audio/wav`, citit cu `request.body()`, fără python-multipart), max 3 MB (413), gol → 400, ne-WAV → 415. `check_rate`, `ATTEMPTS` (reîncercare + rezervă), temperature 0, `thinking_level="minimal"` (Gemini 3 nu acceptă `thinking_budget=0` → 400; la 400 reîncearcă fără setare). Răspuns `{"text"}`; eroare Gemini → 503 `{"error":"busy"}`. Audio doar în memorie. ~1,5 s.
 - Răspunsuri instant fără AI: `app/knowledge.py` + `knowledge/{elio,blocks,general}.json` (faq: `q` variante, `a` răspuns, `show` = buton). Potrivirea e strictă (fără răspunsuri greșite). Fișa `facts` merge în promptul Gemini.
 - Voce: `TTS_PROVIDER=edge|piper` în `.env`, pentru toate răspunsurile (predefinite + Gemini). Gemini NU mai face voce.
   Edge (`edge-tts`, online, MP3 decodat cu `soundfile`): `EDGE_VOICE=ro-RO-AlinaNeural` (sau `ro-RO-EmilNeural`), `EDGE_VOICE_EN=en-US-AnaNeural`, `EDGE_RATE=-5%`; fiecare propoziție cerută separat (în paralel), liniștea Edge tăiată, apoi pauză `EDGE_SENTENCE_SILENCE=0.35` s; timeout 15 s; la orice eroare → Piper automat.

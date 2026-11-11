@@ -13,14 +13,59 @@ const PROJECTS = [
 ];
 const API = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/$/, "");
 
+const canRecord = () =>
+  typeof navigator !== "undefined" && typeof navigator.mediaDevices?.getUserMedia === "function" && typeof MediaRecorder !== "undefined";
+
+// Microphone recording (webm/mp4) -> WAV 16 kHz mono 16-bit, what /api/transcribe expects.
+// Returns null for recordings that are too short to hold a word.
+async function toWav16k(blob: Blob): Promise<Blob | null> {
+  const AC = window.AudioContext || (window as any).webkitAudioContext;
+  const ctx: AudioContext = new AC();
+  let decoded: AudioBuffer;
+  try {
+    decoded = await ctx.decodeAudioData(await blob.arrayBuffer());
+  } finally {
+    void ctx.close();
+  }
+  if (decoded.duration < 0.3) return null;
+  const rate = 16000;
+  const offline = new OfflineAudioContext(1, Math.ceil(decoded.duration * rate), rate);
+  const src = offline.createBufferSource();
+  src.buffer = decoded;            // stereo is mixed down to mono automatically
+  src.connect(offline.destination);
+  src.start();
+  const samples = (await offline.startRendering()).getChannelData(0);
+
+  const out = new DataView(new ArrayBuffer(44 + samples.length * 2));
+  const text = (at: number, s: string) => { for (let i = 0; i < s.length; i++) out.setUint8(at + i, s.charCodeAt(i)); };
+  text(0, "RIFF");
+  out.setUint32(4, 36 + samples.length * 2, true);
+  text(8, "WAVE");
+  text(12, "fmt ");
+  out.setUint32(16, 16, true);       // size of the fmt part
+  out.setUint16(20, 1, true);        // PCM
+  out.setUint16(22, 1, true);        // mono
+  out.setUint32(24, rate, true);
+  out.setUint32(28, rate * 2, true); // bytes per second
+  out.setUint16(32, 2, true);        // bytes per sample
+  out.setUint16(34, 16, true);       // bits per sample
+  text(36, "data");
+  out.setUint32(40, samples.length * 2, true);
+  for (let i = 0; i < samples.length; i++) {
+    const s = Math.max(-1, Math.min(1, samples[i]));
+    out.setInt16(44 + i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+  }
+  return new Blob([out.buffer], { type: "audio/wav" });
+}
+
 // Each topic keeps its own conversation only while this screen is open:
 // leaving the Assistant tab deletes all conversations (they are kept only in memory).
 type Chats = Record<string, Turn[]>;
 const OLD_CHATS_KEY = "elio-chats";  // older versions saved chats here; removed on open
 const TOPIC_KEY = "elio-chat-topic";
 
-// Chat with the ELIO backend (/api/chat -> Gemini). Voice input uses the browser's
-// speech recognition (Chrome on Android and desktop). When ELIO is connected the
+// Chat with the ELIO backend (/api/chat -> Gemini). Voice input: a recording sent to
+// /api/transcribe (Gemini), with the browser's speech recognition as backup. When ELIO is connected the
 // backend also makes a spoken version and the phone sends "SAY:<id>" over
 // Bluetooth: the ESP32 downloads /api/audio/<id>.wav and plays it on its speaker.
 // Without the robot, the phone reads the answer (if voice responses are on).
@@ -62,9 +107,19 @@ export default function MobileAssistant() {
   const rec = useRef<any>(null);
   const end = useRef<HTMLDivElement | null>(null);
 
+  const [transcribing, setTranscribing] = useState(false);
+  const alive = useRef(true);
+
   useEffect(() => {
-    setCanListen(!!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition));
-    return () => { rec.current?.abort?.(); };
+    const sr = !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+    setCanListen(sr || (!!API && canRecord()));
+    alive.current = true;
+    return () => {
+      alive.current = false;
+      holding.current = false;
+      rec.current?.abort?.();
+      stopRecorder();
+    };
   }, []);
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [history, loading]);
 
@@ -148,13 +203,84 @@ export default function MobileAssistant() {
   }
 
   // Push-to-talk: hold the mic while speaking, release to send.
-  // The recognised text goes straight into the conversation.
+  // Two things listen at the same time: the browser's speech recognition and a
+  // recording that the backend sends to Gemini. Gemini's text is used first; the
+  // browser's text is the backup. The recording only lives in memory.
   const holding = useRef(false);
   const heard = useRef("");      // text from earlier recognition sessions while holding
   const live = useRef("");       // text from the current session
+  const srText = useRef<Promise<string>>(Promise.resolve(""));
+  const recording = useRef<Promise<Blob | null>>(Promise.resolve(null));
+  const recorder = useRef<{ mr?: MediaRecorder; stream?: MediaStream; timer?: number } | null>(null);
+  const sendLatest = useRef<(text: string) => void>(() => {});
+
+  function startRecorder() {
+    const box: { mr?: MediaRecorder; stream?: MediaStream; timer?: number } = {};
+    recorder.current = box;
+    recording.current = new Promise<Blob | null>(async (resolve) => {
+      if (!API || !canRecord()) return resolve(null);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+        });
+        box.stream = stream;
+        if (!holding.current || recorder.current !== box) {   // released before the mic was ready
+          stream.getTracks().forEach((t) => t.stop());
+          return resolve(null);
+        }
+        const mr = new MediaRecorder(stream);
+        const chunks: Blob[] = [];
+        mr.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
+        mr.onstop = () => {
+          stream.getTracks().forEach((t) => t.stop());
+          resolve(chunks.length ? new Blob(chunks, { type: mr.mimeType || chunks[0].type }) : null);
+        };
+        mr.onerror = () => { stream.getTracks().forEach((t) => t.stop()); resolve(null); };
+        box.mr = mr;
+        mr.start();
+        box.timer = window.setTimeout(() => micUpRef.current(), 60_000);  // at most 60 s
+      } catch {
+        resolve(null);
+      }
+    });
+  }
+  function stopRecorder() {
+    const box = recorder.current;
+    if (!box) return;
+    window.clearTimeout(box.timer);
+    try {
+      if (box.mr && box.mr.state !== "inactive") box.mr.stop();
+      else box.stream?.getTracks().forEach((t) => t.stop());
+    } catch {
+      box.stream?.getTracks().forEach((t) => t.stop());
+    }
+  }
+
+  // Gemini's transcript of the recording ("" when it fails or hears nothing).
+  async function geminiText(blob: Blob | null): Promise<string> {
+    if (!blob || !API) return "";
+    try {
+      const wav = await toWav16k(blob);
+      if (!wav) return "";
+      const res = await fetch(`${API}/api/transcribe?lang=${lang === "en" ? "en" : "ro"}`, {
+        method: "POST",
+        headers: { "Content-Type": "audio/wav" },
+        body: wav,
+        signal: AbortSignal.timeout(30_000),
+      });
+      if (!res.ok) return "";
+      const data = await res.json();
+      return typeof data.text === "string" ? data.text.trim() : "";
+    } catch {
+      return "";
+    }
+  }
+
   function startRec() {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) return;
+    if (!SR) { srText.current = Promise.resolve(""); return; }
+    let done: (t: string) => void = () => {};
+    srText.current = new Promise<string>((resolve) => { done = resolve; });
     const r = new SR();
     r.lang = lang === "ro" ? "ro-RO" : "en-US";
     r.continuous = true;
@@ -170,30 +296,47 @@ export default function MobileAssistant() {
       if (holding.current) {            // browser stopped on a pause: keep listening
         try { r.start(); return; } catch {}
       }
-      setListening(false);
       const text = heard.current;
       heard.current = "";
-      if (text) void sendMessage(text);
+      done(text);
     };
     rec.current = r;
-    try { r.start(); } catch {}
+    try { r.start(); } catch { done(""); }
   }
   function micDown(e: React.PointerEvent) {
     e.preventDefault();
-    if (loading || holding.current) return;
+    if (loading || transcribing || holding.current) return;
     try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch {}
     hush();
     holding.current = true;
     heard.current = "";
     setListening(true);
     startRec();
+    startRecorder();
   }
-  function micUp() {
+  async function micUp() {
     if (!holding.current) return;
     holding.current = false;
-    try { rec.current?.stop(); } catch { setListening(false); }
+    const r = rec.current;
+    try { r?.stop(); } catch {}
+    stopRecorder();
+    setListening(false);
+    setTranscribing(true);
+    // The browser's text: wait for it to finish, but not forever.
+    const browser = Promise.race([
+      srText.current,
+      new Promise<string>((ok) => setTimeout(() => ok(`${heard.current} ${live.current}`.trim()), 3000)),
+    ]);
+    const [blob, backup] = await Promise.all([recording.current, browser]);
+    const text = (await geminiText(blob)) || backup;
+    if (!alive.current) return;
+    setTranscribing(false);
+    if (text) sendLatest.current(text);
   }
+  const micUpRef = useRef(micUp);
+  micUpRef.current = micUp;
 
+  sendLatest.current = (text: string) => { void sendMessage(text); };
   async function sendMessage(spoken?: string) {
     const q = (spoken ?? draft).trim();
     if (!q || loading) return;
@@ -350,10 +493,12 @@ export default function MobileAssistant() {
           <div key={i} className={`mBubble ${m.role}`}>{m.content}</div>
         ))}
         {loading && <div className="mBubble assistant typing"><span /><span /><span /></div>}
-        {listening && (
+        {(listening || transcribing) && (
           <div className="mBubble user mListening">
             <span className="mWave"><i /><i /><i /><i /></span>
-            {tr("Te ascult… ridică degetul ca să trimiți", "Listening… release to send")}
+            {listening
+              ? tr("Te ascult… ridică degetul ca să trimiți", "Listening… release to send")
+              : tr("Te ascult...", "Listening...")}
           </div>
         )}
         <div ref={end} />
@@ -369,13 +514,13 @@ export default function MobileAssistant() {
         {canListen && (
           <button
             type="button"
-            className={`mIconBtn mMic ${listening ? "rec" : ""}`}
+            className={`mIconBtn mMic ${listening || transcribing ? "rec" : ""}`}
             onPointerDown={micDown}
-            onPointerUp={micUp}
-            onPointerCancel={micUp}
+            onPointerUp={() => void micUp()}
+            onPointerCancel={() => void micUp()}
             onContextMenu={(e) => e.preventDefault()}
-            disabled={loading}
-            aria-label={tr("Ține apăsat și vorbește", "Hold and speak")}
+            disabled={loading || transcribing}
+            aria-label={transcribing ? tr("Te ascult...", "Listening...") : tr("Ține apăsat și vorbește", "Hold and speak")}
           >
             <Icon name="mic" />
           </button>

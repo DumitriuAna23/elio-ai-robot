@@ -23,7 +23,8 @@ import wave
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request, Response
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse
+from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -498,6 +499,76 @@ def chat_stream(x: Chat, request: Request):
         yield line({"done": True})
 
     return StreamingResponse(lines(), media_type="application/x-ndjson", headers={"Cache-Control": "no-store", "X-Accel-Buffering": "no"})
+
+
+# ---------------------------------------------------------------- speech to text
+# The app records the child's question (WAV 16 kHz mono) and Gemini writes it down.
+# The audio is only kept in memory for this request; nothing is saved.
+MAX_UPLOAD_BYTES = 3 * 1024 * 1024
+TRANSCRIBE_VOCAB = (
+    "ELIO, robot, LEGO SPIKE, SPIKE Prime, Essential, blocuri, bucle, repetă, dacă, altfel, variabilă, "
+    "senzor de distanță, senzor de culoare, motor, giroscop, Bluetooth, Wi-Fi, Tales & Tech Hub"
+)
+
+
+def transcribe_prompt(lang: str) -> str:
+    language = "engleză" if lang == "en" else "română"
+    return (
+        f"Transcrie exact ce spune vorbitorul (de obicei un copil) în limba {language}. "
+        "Răspunde DOAR cu textul transcris, fără ghilimele sau explicații. "
+        "Dacă nu se aude vorbire, răspunde cu un text gol. "
+        f"Vocabular posibil: {TRANSCRIBE_VOCAB}."
+    )
+
+
+def transcribe_wav(audio: bytes, lang: str):
+    from google.genai import types
+
+    contents = [types.Part.from_bytes(data=audio, mime_type="audio/wav"), types.Part(text=transcribe_prompt(lang))]
+    # Gemini 3 can't switch thinking off completely (thinking_budget=0 -> 400); "minimal" is the lowest.
+    no_thinking = types.ThinkingConfig(thinking_level="minimal")
+    last_error = None
+    for model, wait in ATTEMPTS:
+        if not model:
+            continue
+        if wait:
+            time.sleep(wait)
+        for thinking in (no_thinking, None):  # some models can't turn thinking off: then use their default
+            try:
+                t0 = time.time()
+                config = types.GenerateContentConfig(temperature=0, max_output_tokens=512, thinking_config=thinking)
+                result = gemini().models.generate_content(model=model, contents=contents, config=config)
+                text = (result.text or "").strip().strip('"„”“«»').strip()
+                print(f"[timp] transcriere de la {model}: {time.time() - t0:.1f} s")
+                return {"text": text}
+            except HTTPException:
+                raise
+            except Exception as e:
+                last_error = e
+                print(f"Gemini transcribe error ({model}):", repr(e))
+                if thinking is not None and ("thinking" in str(e).lower() or "INVALID_ARGUMENT" in str(e)):
+                    continue
+                break
+        if last_error is not None and not any(code in str(last_error) for code in TEMPORARY):
+            break
+    return JSONResponse({"error": "busy"}, status_code=503)
+
+
+@app.post("/api/transcribe")
+async def transcribe(request: Request, lang: Literal["ro", "en"] = "ro"):
+    """Raw WAV in the request body -> {"text": "..."}."""
+    check_rate(request)
+    size = request.headers.get("content-length", "")
+    if size.isdigit() and int(size) > MAX_UPLOAD_BYTES:
+        raise HTTPException(413, "Recording too long.")
+    audio = await request.body()
+    if not audio:
+        raise HTTPException(400, "Empty recording.")
+    if len(audio) > MAX_UPLOAD_BYTES:
+        raise HTTPException(413, "Recording too long.")
+    if audio[:4] != b"RIFF" or audio[8:12] != b"WAVE":
+        raise HTTPException(415, "Send a WAV file.")
+    return await run_in_threadpool(transcribe_wav, audio, lang)
 
 
 @app.get("/api/faq")
